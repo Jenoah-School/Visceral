@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 59d7d1a494441b64eae37c63056d5cae
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - hoverSound: {fileID: 8300000, guid: 7f000e41343794a42811fee50f605b23, type: 3}
+  - clickDownSound: {fileID: 8300000, guid: ddf22a4c104920d49b1ffbe36f480bb6, type: 3}
+  - clickUpSound: {fileID: 8300000, guid: deb76318936f64b48b308d6aa7162f95, type: 3}
+  - fullClickSound: {fileID: 8300000, guid: 5c23fddfe873032408058993f56c078b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cbb50bd6d6a9c45b239b13cbe5e11a, type: 3}
+  m_Name: Fallback
+  m_EditorClassIdentifier: 
+  footstepSounds:
+  - {fileID: 8300000, guid: 6fce5b07936b0f549bf6ec6832da2d1e, type: 3}
+  - {fileID: 8300000, guid: df382391d5347db4c8a1a08203ecdb2c, type: 3}
+  - {fileID: 8300000, guid: 4b2427d5874212b4e95f8dfac21f539a, type: 3}
+  - {fileID: 8300000, guid: 573aac422e049574785d3e9c39dced74, type: 3}
+  - {fileID: 8300000, guid: c6fe733ec1905e44db301826aa3b608c, type: 3}
+  - {fileID: 8300000, guid: f9cd990f1e910564e90bddf88b33036a, type: 3}
+  - {fileID: 8300000, guid: bb1346c5036134a40aaf9ea4434ecdcd, type: 3}
+  - {fileID: 8300000, guid: 9f6b247c611020241a0ba9b2495e9e62, type: 3}
+  triggerLayer:
+    serializedVersion: 2
+    m_Bits: 73
