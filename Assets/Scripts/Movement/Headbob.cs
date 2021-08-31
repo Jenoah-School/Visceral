@@ -19,6 +19,8 @@ public class Headbob : MonoBehaviour
     private Vector3 startPosition = Vector3.zero;
     private Vector3 previousPosition = Vector3.zero;
 
+    private float influence = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,14 +42,14 @@ public class Headbob : MonoBehaviour
     private void CheckMotion()
     {
         float playerSpeed = (previousPosition - referenceCameraHolder.position).magnitude;
-        if (playerSpeed < minimumMoveSpeed /* || !isGrounded*/) return;
+        influence = Mathf.Clamp01(playerSpeed / minimumMoveSpeed);
 
         PlayMotion(FootstepMotion());
     }
 
     private void PlayMotion(Vector3 motion)
     {
-        referenceCamera.localPosition += motion;
+        referenceCamera.localPosition += motion * influence;
     }
 
     private Vector3 FootstepMotion()
@@ -64,4 +66,6 @@ public class Headbob : MonoBehaviour
         if (referenceCamera.localPosition == startPosition) return;
         referenceCamera.localPosition = Vector3.Lerp(referenceCamera.localPosition, startPosition, resetSmoothing * Time.deltaTime);
     }
+
+
 }
