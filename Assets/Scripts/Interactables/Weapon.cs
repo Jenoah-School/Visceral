@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 public class Weapon : MonoBehaviour
@@ -10,6 +11,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private int ammo = 30;
     [SerializeField] private float cooldownTime = 0.2f;
     [SerializeField] private Transform muzzlePoint = null;
+    [SerializeField] private UnityEvent OnSuccesfullShot;
 
     [Header("Effects")]
     [SerializeField] private ParticleSystem muzzleFlash = null;
@@ -130,6 +132,8 @@ public class Weapon : MonoBehaviour
                             hitRb.AddForceAtPosition(-hit.normal * bulletImpactForce, hit.point, ForceMode.Impulse);
                         }
                     }
+
+                    OnSuccesfullShot.Invoke();
                 }
             }
             else

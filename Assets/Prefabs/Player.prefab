@@ -449,6 +449,21 @@ MonoBehaviour:
   ammo: 30
   cooldownTime: 0.2
   muzzlePoint: {fileID: 1643975807}
+  OnSuccesfullShot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2925033837602402457}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   muzzleFlash: {fileID: 6788947631188110302}
   shootSound: {fileID: 8300000, guid: 9836f352b814c524eb46a530b5611bcd, type: 3}
   impactEffect: {fileID: 0}
@@ -671,6 +686,7 @@ GameObject:
   - component: {fileID: 6788947632087072922}
   - component: {fileID: 6788947632087072923}
   - component: {fileID: 6788947632087072927}
+  - component: {fileID: 2925033837602402457}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -896,6 +912,25 @@ MonoBehaviour:
   groundedCheckDistance: 1.1
   movedCheckDistance: 1.5
   audioSource: {fileID: 6788947632087072926}
+--- !u!114 &2925033837602402457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788947632087072934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c13f8f2e4fa4c578681a3a30a1f4d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &3715969635722204149
 PrefabInstance:
   m_ObjectHideFlags: 0
