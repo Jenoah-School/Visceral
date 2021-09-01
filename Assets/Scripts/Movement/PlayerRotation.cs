@@ -5,12 +5,11 @@ using UnityEngine;
 public class PlayerRotation : MonoBehaviour
 {
     [SerializeField] private Transform cam = null;
-    [SerializeField] private float verticalRotationSpeed = 400f;
-    [SerializeField] private float horizontalRotationSpeed = 400f;
+    [SerializeField] private float lookSpeed = 400f;
     [SerializeField] private Vector2 verticalRotationLimit = new Vector2(-90f, 90f);
 
-    private float currentVerticalAngle = 0;
-    private float currentHorizontalAngle = 0;
+    private float currentAngleX = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +22,15 @@ public class PlayerRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentVerticalAngle -= Input.GetAxis("Mouse Y") * Time.deltaTime * verticalRotationSpeed;
-        currentHorizontalAngle += Input.GetAxis("Mouse X") * horizontalRotationSpeed * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * lookSpeed * Time.timeScale;
+        float mouseY = Input.GetAxis("Mouse Y") * lookSpeed * Time.timeScale;
 
-        currentVerticalAngle = Mathf.Clamp(currentVerticalAngle, verticalRotationLimit.x, verticalRotationLimit.y);
+        currentAngleX -= mouseY;
 
-        cam.localRotation = Quaternion.Euler(currentVerticalAngle, 0, 0);
-        transform.localRotation = Quaternion.Euler(0, currentHorizontalAngle, 0);
+        currentAngleX = Mathf.Clamp(currentAngleX, verticalRotationLimit.x, verticalRotationLimit.y);
+
+        cam.localRotation = Quaternion.Euler(currentAngleX, 0, 0);
+        transform.localRotation *= Quaternion.Euler(0, mouseX, 0);
 
     }
 }
