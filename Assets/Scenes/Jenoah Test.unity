@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.05
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientSkyColor: {r: 0.3207547, g: 0.22815949, b: 0.23587577, a: 1}
+  m_AmbientEquatorColor: {r: 0.13333334, g: 0.11372549, b: 0.11469377, a: 1}
+  m_AmbientGroundColor: {r: 0.047058824, g: 0.03529412, b: 0.035875086, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 63040d36a3944934886c2450203e4888, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 643066751}
-  m_IndirectSpecularColor: {r: 0.18337014, g: 0.22721712, b: 0.29586735, a: 1}
+  m_IndirectSpecularColor: {r: 0.17867133, g: 0.08066912, b: 0.0128223365, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -366,13 +366,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643066750}
-  m_LocalRotation: {x: 0.21345505, y: 0.26446402, z: 0.0053074616, w: 0.94046134}
+  m_LocalRotation: {x: 0.16942708, y: 0.26393002, z: 0.017617509, w: 0.9493814}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 23.496, y: 33.016, z: 7.701}
+  m_LocalEulerAnglesHint: {x: 18.204, y: 32.265, z: 7.433}
 --- !u!1 &1347700138
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +790,26 @@ PrefabInstance:
     - target: {fileID: 6788947630375776845, guid: b689421f0287d734aa85c599deffbb5f, type: 3}
       propertyPath: m_Cameras.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947630375776845, guid: b689421f0287d734aa85c599deffbb5f, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947630375776847, guid: b689421f0287d734aa85c599deffbb5f, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947630375776847, guid: b689421f0287d734aa85c599deffbb5f, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.15827695
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947630375776847, guid: b689421f0287d734aa85c599deffbb5f, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.17402595
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947630375776847, guid: b689421f0287d734aa85c599deffbb5f, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.7169812
       objectReference: {fileID: 0}
     - target: {fileID: 6788947632087072920, guid: b689421f0287d734aa85c599deffbb5f, type: 3}
       propertyPath: m_RootOrder
