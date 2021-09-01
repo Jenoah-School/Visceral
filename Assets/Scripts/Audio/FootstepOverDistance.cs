@@ -21,6 +21,7 @@ public class FootstepOverDistance : MonoBehaviour
         sqrCheckDistance = movedCheckDistance * movedCheckDistance;
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
         stepSound = StepSound.Instance;
+        if (stepSound == null) enabled = false;
     }
 
     /// <summary>
