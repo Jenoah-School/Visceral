@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float cooldownTime = 0.2f;
     [SerializeField] private Transform muzzlePoint = null;
     [SerializeField] private UnityEvent OnSuccesfullShot;
+    [SerializeField] private float bulletDamage = 10f;
 
     [Header("Effects")]
     [SerializeField] private ParticleSystem muzzleFlash = null;
@@ -117,9 +118,9 @@ public class Weapon : MonoBehaviour
                 {
                     if (hit.collider != null)
                     {
-                        if (hit.transform.CompareTag("Enemy"))
+                        if (hit.transform.CompareTag("Enemy") && hit.transform.root.gameObject.TryGetComponent(out EntityHealth entityHealth))
                         {
-                            //Damage enemy
+                            entityHealth.DealDamage(bulletDamage);
                         }
                         else if (impactEffect != null)
                         {
@@ -127,7 +128,8 @@ public class Weapon : MonoBehaviour
                             Destroy(hitImpactEffect, bulletDespawnTime);
                         }
 
-                        if (hit.transform.TryGetComponent(out Rigidbody hitRb))
+                        Rigidbody hitRb = null;
+                        if (hit.transform.TryGetComponent(out hitRb) || hit.transform.root.TryGetComponent(out hitRb))
                         {
                             hitRb.AddForceAtPosition(-hit.normal * bulletImpactForce, hit.point, ForceMode.Impulse);
                         }
