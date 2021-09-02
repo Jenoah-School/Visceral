@@ -1,0 +1,95 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class ShootOnSight : MonoBehaviour
+{
+    [SerializeField] private bool canShootWhenMoving = false;
+    [SerializeField] private float minimumShootDistance = 4f;
+    [SerializeField] private float maximumShootDistance = 10f;
+    [SerializeField] private Transform target = null;
+    [SerializeField] private float shootCooldown = 2f;
+    [SerializeField] private LayerMask ignoreLayers;
+
+    [Header("Projectile")]
+    [SerializeField] private GameObject projectilePrefab = null;
+    [SerializeField] private float projectileLifetime = 10f;
+    [SerializeField] private Transform spawnPoint = null;
+
+    [Header("Events")]
+    [SerializeField] private UnityEvent OnFirstSight;
+    [SerializeField] private UnityEvent OnLoseSight;
+
+    private float nextShootTime = 0f;
+    private bool hasClearView = false;
+    private Vector3 playerDirection = Vector3.zero;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform.root;
+        if (target == null)
+        {
+            Debug.LogWarning("No shooting target set", gameObject);
+            enabled = false;
+        }
+
+        nextShootTime = Time.time + shootCooldown;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (IsInRangeAndView())
+        {
+            if (!hasClearView)
+            {
+                hasClearView = true;
+                OnFirstSight.Invoke();
+            }
+
+            if (Time.time < nextShootTime) return;
+            Shoot();
+        }
+        else
+        {
+            if (hasClearView)
+            {
+                hasClearView = false;
+                OnLoseSight.Invoke();
+            }
+        }
+ 
+    }
+
+    public bool IsInRangeAndView()
+    {
+        playerDirection = (target.position - transform.position);
+        float targetDistance = playerDirection.sqrMagnitude;
+
+        //When AI can shoot
+        if (targetDistance < maximumShootDistance * maximumShootDistance && targetDistance > minimumShootDistance * minimumShootDistance)
+        {
+                if (Physics.Raycast(transform.position, playerDirection, out RaycastHit hit, maximumShootDistance, ~ignoreLayers))
+                {
+                    //If target is in view
+                    if (hit.transform.root == target)
+                    {
+                        return true;
+                    }
+                }
+        }
+
+        return false;
+    }
+
+    private void Shoot()
+    {
+        GameObject projectile = Instantiate(projectilePrefab);
+        projectile.transform.position = spawnPoint.position;
+        projectile.transform.rotation = Quaternion.LookRotation(playerDirection.normalized);
+        Destroy(projectile, projectileLifetime);
+        nextShootTime = Time.time + shootCooldown;
+    }
+}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DamageInRadius : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class DamageInRadius : MonoBehaviour
     [SerializeField] private float damageRadius = 3f;
     [SerializeField] private float damageTime = 3f;
     [SerializeField] private float damageAmount = 5f;
+    [SerializeField] private UnityEvent OnDamage;
 
     private float nextDamageTime = 0f;
     private PlayerHealth playerHealth = null;
@@ -27,6 +29,7 @@ public class DamageInRadius : MonoBehaviour
         if ((transform.position - player.transform.position).sqrMagnitude < damageRadius * damageRadius)
         {
             playerHealth.DealDamage(damageAmount);
+            OnDamage.Invoke();
             nextDamageTime = Time.time + damageTime;
         }
     }

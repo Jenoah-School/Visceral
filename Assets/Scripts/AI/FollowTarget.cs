@@ -22,6 +22,8 @@ public class FollowTarget : MonoBehaviour
 
     private Vector3 previousPosition = Vector3.zero;
 
+    private bool canMove = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,15 +39,26 @@ public class FollowTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float currentDistanceFromTargetSqr = (transform.position - target.position).sqrMagnitude;
-        if(currentDistanceFromTargetSqr < followDistance * followDistance && currentDistanceFromTargetSqr > stopDistance * stopDistance)
+        if (canMove)
         {
-            MoveToPosition(target.position + targetOffset);
+            float currentDistanceFromTargetSqr = (transform.position - target.position).sqrMagnitude;
+            if (currentDistanceFromTargetSqr < followDistance * followDistance && currentDistanceFromTargetSqr > stopDistance * stopDistance)
+            {
+                MoveToPosition(target.position + targetOffset);
+            }
         }
+
         if (rotateInMoveDirection)
         {
             velocity = transform.position - previousPosition;
-            if(velocity != Vector3.zero) targetRotation = Quaternion.LookRotation(velocity.normalized);
+            if (velocity == Vector3.zero)
+            {
+                targetRotation = Quaternion.LookRotation((target.position - transform.position));
+            }
+            else
+            {
+                targetRotation = Quaternion.LookRotation(velocity.normalized);
+            }
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
         }
 
@@ -64,5 +77,10 @@ public class FollowTarget : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, followDistance);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, stopDistance);
+    }
+
+    public void SetMoveState(bool moveState)
+    {
+        canMove = moveState;
     }
 }
