@@ -11,6 +11,7 @@ public class ShootOnSight : MonoBehaviour
     [SerializeField] private Transform target = null;
     [SerializeField] private float shootCooldown = 2f;
     [SerializeField] private LayerMask ignoreLayers;
+    [SerializeField] private Vector3 targetOffset = Vector3.zero;
 
     [Header("Projectile")]
     [SerializeField] private GameObject projectilePrefab = null;
@@ -20,6 +21,7 @@ public class ShootOnSight : MonoBehaviour
     [Header("Events")]
     [SerializeField] private UnityEvent OnFirstSight;
     [SerializeField] private UnityEvent OnLoseSight;
+    [SerializeField] private UnityEvent OnShoot;
 
     private float nextShootTime = 0f;
     private bool hasClearView = false;
@@ -65,7 +67,7 @@ public class ShootOnSight : MonoBehaviour
 
     public bool IsInRangeAndView()
     {
-        playerDirection = (target.position - transform.position);
+        playerDirection = ((target.position + targetOffset) - transform.position);
         float targetDistance = playerDirection.sqrMagnitude;
 
         //When AI can shoot
@@ -91,5 +93,6 @@ public class ShootOnSight : MonoBehaviour
         projectile.transform.rotation = Quaternion.LookRotation(playerDirection.normalized);
         Destroy(projectile, projectileLifetime);
         nextShootTime = Time.time + shootCooldown;
+        OnShoot.Invoke();
     }
 }

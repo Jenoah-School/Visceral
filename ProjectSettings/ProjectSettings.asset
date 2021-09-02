@@ -16,7 +16,7 @@ PlayerSettings:
   productName: Visceral
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 1, g: 0.41960788, b: 0.46274513, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.99607843, g: 0.47843137, b: 0.4745098, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 0

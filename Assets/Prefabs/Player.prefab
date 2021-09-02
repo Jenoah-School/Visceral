@@ -183,7 +183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9413fceaf87e6744a844641602e479df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -301,7 +301,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: cb9773c378d8c4b43a01793e3ed24342, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -445,14 +445,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2c3e105f1712b409456b120c6a1def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAutomatic: 1
   infiniteAmmo: 1
   ammo: 30
-  cooldownTime: 0.2
-  muzzlePoint: {fileID: 1643975807}
+  cooldownTime: 0.5
+  muzzlePoint: {fileID: 6788947630375776846}
   OnSuccesfullShot:
     m_PersistentCalls:
+      m_Calls: []
+  OnEveryShot:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2925033837602402457}
+      - m_Target: {fileID: 88998918}
         m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
         m_MethodName: DealDamage
         m_Mode: 4
@@ -464,10 +468,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  bulletDamage: 10
+  continuesMuzzleFlash: 1
   muzzleFlash: {fileID: 6788947631188110302}
   shootSound: {fileID: 8300000, guid: 9836f352b814c524eb46a530b5611bcd, type: 3}
   impactEffect: {fileID: 0}
-  muzzleLight: {fileID: 349101804}
+  muzzleLight: {fileID: 349101806}
   muzzleLightTime: 0.05
   useScreenShake: 1
   shakeSpeed: 2
@@ -489,7 +495,7 @@ MonoBehaviour:
     m_Bits: 64
   maxHitDistance: 100
   bulletDespawnTime: 10
-  bulletImpactForce: 2
+  bulletImpactForce: 50
   bulletWidth: 0.05
 --- !u!1 &6788947630375776841
 GameObject:
@@ -536,7 +542,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.7169812, g: 0.17402595, b: 0.15827695, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -633,7 +639,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6788947630375776841}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33d8c1efe87e40245aa24d73f9c73076, type: 3}
   m_Name: 
@@ -686,7 +692,7 @@ GameObject:
   - component: {fileID: 6788947632087072922}
   - component: {fileID: 6788947632087072923}
   - component: {fileID: 6788947632087072927}
-  - component: {fileID: 2925033837602402457}
+  - component: {fileID: 88998918}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -872,7 +878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 6788947631706273187}
-  lookSpeed: 6
+  lookSpeed: 5
   verticalRotationLimit: {x: -85, y: 89}
 --- !u!114 &6788947632087072923
 MonoBehaviour:
@@ -911,7 +917,7 @@ MonoBehaviour:
   groundedCheckDistance: 1.1
   movedCheckDistance: 1.5
   audioSource: {fileID: 6788947632087072926}
---- !u!114 &2925033837602402457
+--- !u!114 &88998918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -920,7 +926,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6788947632087072934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42c13f8f2e4fa4c578681a3a30a1f4d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 65fc1302d304be0409e37ebaa7c4f9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
@@ -931,6 +937,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   healthBar: {fileID: 0}
+  reloadKey: 114
+  reloadCooldown: 10
 --- !u!1001 &3715969635722204149
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 299973549745567311}
   - component: {fileID: 299973549745567314}
   - component: {fileID: 299973549745567313}
-  - component: {fileID: 299973549745567312}
   m_Layer: 7
   m_Name: Eyes
   m_TagString: Untagged
@@ -194,19 +193,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &299973549745567312
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299973549745567310}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &299973550222876855
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +488,7 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 422
+  targetOffset: {x: 0, y: 0.5, z: 0}
   projectilePrefab: {fileID: 561763895931962308, guid: c0b684f4a84074eadbef36df2d58cc87, type: 3}
   projectileLifetime: 10
   spawnPoint: {fileID: 299973550249745704}
@@ -535,6 +522,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  OnShoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 299973550705342401}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 678bcc01eb9aef444b984e46396a2930, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &299973550705342401
 AudioSource:
   m_ObjectHideFlags: 0
@@ -544,7 +546,7 @@ AudioSource:
   m_GameObject: {fileID: 299973550705342461}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4911062006814901572, guid: 06d885caf33d4e24ea6d3e90e937bf87, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -555,7 +557,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 5
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -591,7 +593,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

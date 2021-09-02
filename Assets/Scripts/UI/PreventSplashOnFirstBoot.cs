@@ -13,7 +13,6 @@ public class PreventSplashOnFirstBoot : MonoBehaviour
        if(Time.unscaledTime <= timerThreshold)
         {
             splashScreenAnimator.Play(animationName, 0, 1f);
-            Debug.Log("Stopped splash");
         }
     }
 }

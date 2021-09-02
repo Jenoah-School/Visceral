@@ -53,7 +53,7 @@ public class FollowTarget : MonoBehaviour
             velocity = transform.position - previousPosition;
             if (velocity == Vector3.zero)
             {
-                targetRotation = Quaternion.LookRotation((target.position - transform.position));
+                targetRotation = Quaternion.LookRotation(((target.position + targetOffset) - transform.position));
             }
             else
             {

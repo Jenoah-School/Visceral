@@ -2,23 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 [RequireComponent(typeof(AudioSource))]
 public class Weapon : MonoBehaviour
 {
     [Header("Shooting")]
+    [SerializeField] private bool isAutomatic = false;
     [SerializeField] private bool infiniteAmmo = false;
     [SerializeField] private int ammo = 30;
     [SerializeField] private float cooldownTime = 0.2f;
     [SerializeField] private Transform muzzlePoint = null;
     [SerializeField] private UnityEvent OnSuccesfullShot;
+    [SerializeField] private UnityEvent OnEveryShot;
     [SerializeField] private float bulletDamage = 10f;
 
     [Header("Effects")]
+    [SerializeField] private bool continuesMuzzleFlash = false;
     [SerializeField] private ParticleSystem muzzleFlash = null;
     [SerializeField] private AudioClip shootSound = null;
     [SerializeField] private GameObject impactEffect = null;
-    [SerializeField] private GameObject muzzleLight = null;
+    [SerializeField] private Light muzzleLight = null;
     [SerializeField] private float muzzleLightTime = 0.05f;
 
     [Header("Screen shake")]
@@ -61,6 +65,9 @@ public class Weapon : MonoBehaviour
     private Vector3 startPosition = Vector3.zero;
     private bool isInUse = true;
 
+    private float targetAudioVolume = 1f;
+    private float targetLightBrightness = 1f;
+
     private Camera mainCamera = null;
 
     private void Start()
@@ -71,6 +78,9 @@ public class Weapon : MonoBehaviour
         startPosition = transform.localPosition;
         mainCamera = Camera.main;
         screenShake = ScreenShake.Instance;
+        if (muzzleFlash != null && muzzleFlash.isPlaying) muzzleFlash.Stop();
+        if (muzzleLight != null) targetLightBrightness = muzzleLight.intensity;
+        targetAudioVolume = audioSource.volume;
     }
 
     public void Update()
@@ -85,7 +95,7 @@ public class Weapon : MonoBehaviour
 
     public void LateUpdate()
     {
-        if (!isInUse) return;
+        if (!isInUse || !recoil) return;
         ApplyRecoil();
     }
 
@@ -95,6 +105,37 @@ public class Weapon : MonoBehaviour
     public virtual void HandleInput()
     {
         if (Input.GetMouseButtonDown(0) && isInUse)
+        {
+            Shoot();
+            if (continuesMuzzleFlash)
+            {
+                if (muzzleFlash != null) muzzleFlash.Play();
+                if (muzzleLight != null)
+                {
+                    muzzleLight.gameObject.SetActive(true);
+                    muzzleLight.DOIntensity(targetLightBrightness, 0.3f);
+                }
+                if (audioSource != null)
+                {
+                    audioSource.Play();
+                    audioSource.DOFade(targetAudioVolume, 0.3f);
+                }
+            }
+        }
+        else if (Input.GetMouseButtonUp(0) && isInUse)
+        {
+            if (continuesMuzzleFlash)
+            {
+                if (muzzleFlash != null) muzzleFlash.Stop();
+                if (muzzleLight != null) muzzleLight.DOIntensity(0f, 0.3f);
+                if (audioSource != null)
+                {
+                    audioSource.DOFade(0f, 0.3f);
+                }
+            }
+        }
+
+        if (isAutomatic && Input.GetMouseButton(0) && isInUse)
         {
             Shoot();
         }
@@ -151,9 +192,16 @@ public class Weapon : MonoBehaviour
                 Destroy(projectile, projectileDespawnTime);
             }
 
-            if (muzzleFlash != null) muzzleFlash.Play();
-            if (shootSound != null) audioSource.PlayOneShot(shootSound);
-            if (muzzleLight != null) StartCoroutine(FlickerMuzzleLight());
+            if (!continuesMuzzleFlash)
+            {
+                if (muzzleFlash != null) muzzleFlash.Play();
+                if (shootSound != null) audioSource.PlayOneShot(shootSound);
+                if (muzzleLight != null) StartCoroutine(FlickerMuzzleLight());
+            }
+            else
+            {
+                transform.DOShakePosition(cooldownTime, 0.01f, 10, 90, false, false);
+            }
 
             if (useScreenShake && screenShake != null)
             {
@@ -170,6 +218,8 @@ public class Weapon : MonoBehaviour
                 currentRecoilRotation += fixedRecoilTorque;
                 currentRecoilPosition += recoilForce;
             }
+
+            OnEveryShot.Invoke();
         }
     }
 
@@ -202,9 +252,9 @@ public class Weapon : MonoBehaviour
     {
         if (muzzleLight != null)
         {
-            muzzleLight.SetActive(true);
+            muzzleLight.gameObject.SetActive(true);
             yield return new WaitForSeconds(muzzleLightTime);
-            muzzleLight.SetActive(false);
+            muzzleLight.gameObject.SetActive(false);
         }
     }
 }

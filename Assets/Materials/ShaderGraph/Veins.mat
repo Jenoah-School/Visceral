@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Veins
+  m_Shader: {fileID: -6465566751694194690, guid: 6e97ccb55d0c8fb46b761a03a79ef20b, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_290388454dc445e9a8d034e99c9f65ba:
+        m_Texture: {fileID: 2800000, guid: 803f3abf4e2c11f45b884c8231f75535, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalFromTexture_fd1061af9f7444829d0823c224c5e9d0_Texture_0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_64a2feff95564763b512c37ea5e1abae_Texture_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_33aeb5fe4f4f4507a085007981588d81: 0.5
+    - Vector1_52241960362f4070935db1f3c47267ef: 2
+    - Vector1_85597fe456914978a40c9a547d279b6a: 0.5
+    - Vector1_c10c7b09a57e4120a4404b7ecf227ba7: 0.25
+    - Vector1_e1f0dba50986453f8562d1387b3bc692: 1
+    - Vector1_ff1ef53dddbb4859b3ce5e1b433d4408: 8
+    m_Colors:
+    - Color_293b474539794eb9b7c1eb572b4510a2: {r: 0.5754717, g: 0.28990743, b: 0.35570022, a: 0}
+    - Color_d7f2a1848e654745b33629fab766f39d: {r: 0.3207547, g: 0.11922391, b: 0.16000994, a: 1}
+    - Vector2_7b2c0026c328474bb724f13a9197eec6: {r: 1, g: 1, b: 20, a: 20}
+  m_BuildTextureStacks: []
