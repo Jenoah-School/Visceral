@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9184389603804742054}
   - component: {fileID: 9184389603804742052}
   m_Layer: 7
-  m_Name: Red bloodcell
+  m_Name: White cell
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
