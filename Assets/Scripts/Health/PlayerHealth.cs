@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class PlayerHealth : EntityHealth
 {
     [SerializeField] private Image healthBar = null;
+    [SerializeField] private Image reloadBar = null;
     [SerializeField] private KeyCode reloadKey = KeyCode.R;
     [SerializeField] private float reloadCooldown = 15f;
     [SerializeField] private float projectileDamage = 10f;
@@ -30,9 +31,17 @@ public class PlayerHealth : EntityHealth
             {
                 health = startHealth;
                 if (healthBar != null) healthBar.DOFillAmount(1f, 1.5f);
+                reloadBar.fillAmount = 0f;
                 nextReloadTime = Time.time + reloadCooldown;
                 OnHeal.Invoke();
             }
+        }
+
+        if (reloadBar != null && Time.time < nextReloadTime)
+        {
+            float timeRemaining = Time.time - nextReloadTime;
+            float normalizedRemaining = 1f - Mathf.Abs(timeRemaining / reloadCooldown);
+            reloadBar.fillAmount = normalizedRemaining;
         }
     }
 

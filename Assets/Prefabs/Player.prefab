@@ -965,8 +965,10 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   healthBar: {fileID: 0}
+  reloadBar: {fileID: 0}
   reloadKey: 114
   reloadCooldown: 10
+  projectileDamage: 10
   OnHeal:
     m_PersistentCalls:
       m_Calls:
