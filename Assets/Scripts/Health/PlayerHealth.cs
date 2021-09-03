@@ -10,6 +10,7 @@ public class PlayerHealth : EntityHealth
     [SerializeField] private Image healthBar = null;
     [SerializeField] private KeyCode reloadKey = KeyCode.R;
     [SerializeField] private float reloadCooldown = 15f;
+    [SerializeField] private float projectileDamage = 10f;
 
     [SerializeField] private UnityEvent OnHeal;
 
@@ -53,7 +54,7 @@ public class PlayerHealth : EntityHealth
         if (collision.transform.CompareTag("Projectile"))
         {
             Destroy(collision.gameObject);
-            DealDamage(10);
+            DealDamage(projectileDamage);
         }
     }
 }
