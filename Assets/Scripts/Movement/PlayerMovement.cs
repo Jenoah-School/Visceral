@@ -10,9 +10,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     [Header("Speed")]
-    [SerializeField] private float walkSpeed = 2.5f;
+    [SerializeField] private float walkSpeed = 1.0f;
     [SerializeField] private float runSpeed = 3.5f;
-    [SerializeField] private float crouchSpeed = 1.5f;
+    [SerializeField] private float crouchSpeed = 0.5f;
     [SerializeField] private float fastCrouchSpeed = 2f;
 
     [Header("Generic")]
@@ -44,16 +44,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift)){
-            if (Input.GetKey(KeyCode.LeftControl))
-            {
-                SetMoveState(MoveState.fastCrouching);
-            }
-            else
-            {
-                SetMoveState(MoveState.running);
-            }
-        }else if (Input.GetKey(KeyCode.LeftControl))
+        //if (Input.GetKey(KeyCode.LeftShift)){
+            //if (Input.GetKey(KeyCode.LeftControl))
+            //{
+                //SetMoveState(MoveState.fastCrouching);
+            //}
+            //else
+            //{
+                //SetMoveState(MoveState.running);
+            //}
+        //}else
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             SetMoveState(MoveState.crouching);
         }
