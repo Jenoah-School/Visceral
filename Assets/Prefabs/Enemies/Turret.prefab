@@ -374,7 +374,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 678bcc01eb9aef444b984e46396a2930, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 68e7c087c0f83bb499f5acbb69911a7f, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -413,8 +413,20 @@ MonoBehaviour:
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 8300000, guid: 8ee4d79ba6d8f3141b79af14392bf8cf, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6094185229028684261}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8ee4d79ba6d8f3141b79af14392bf8cf, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -435,12 +447,13 @@ MonoBehaviour:
   canShootWhenMoving: 0
   minimumShootDistance: 4
   maximumShootDistance: 10
+  alignmentWeightForShot: 0.95
   target: {fileID: 0}
-  shootCooldown: 2
+  shootCooldown: 1
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 438
-  targetOffset: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0.5, z: 0}
   projectilePrefab: {fileID: 561763895931962308, guid: c0b684f4a84074eadbef36df2d58cc87, type: 3}
   projectileLifetime: 10
   spawnPoint: {fileID: 6094185228623709103}
@@ -468,7 +481,9 @@ MonoBehaviour:
   minimumLookRadius: 10
   target: {fileID: 0}
   shootCooldown: 3
-  targetOffset: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0.5, z: 0}
+  rotationSmoothing: 5
+  lookClamping: 160
 --- !u!54 &6094185229028684262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -478,8 +493,8 @@ Rigidbody:
   m_GameObject: {fileID: 6094185229028684259}
   serializedVersion: 2
   m_Mass: 10
-  m_Drag: 3
-  m_AngularDrag: 10
+  m_Drag: 1
+  m_AngularDrag: 3
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0

@@ -8,8 +8,13 @@ public class LookAt : MonoBehaviour
     [SerializeField] private Transform target = null;
     [SerializeField] private float shootCooldown = 3f;
     [SerializeField] private Vector3 targetOffset = Vector3.zero;
+    [SerializeField] private float rotationSmoothing = 5f;
+    [SerializeField] private float lookClamping = 45f;
 
     Vector3 playerDirection = Vector3.zero;
+    Quaternion targetRotation = Quaternion.identity;
+    Vector3 startForward = Vector3.zero;
+    private float normalizedLookClamping = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +24,8 @@ public class LookAt : MonoBehaviour
             Debug.LogWarning("No shooting target set", gameObject);
             enabled = false;
         }
+        startForward = transform.forward;
+        normalizedLookClamping = 1f - lookClamping / 180f;
     }
 
     // Update is called once per frame
@@ -27,9 +34,11 @@ public class LookAt : MonoBehaviour
         playerDirection = ((target.position + targetOffset) - transform.position);
         float targetDistance = playerDirection.sqrMagnitude;
 
-        if(targetDistance < minimumLookRadius * minimumLookRadius)
+        if(Vector3.Dot(startForward, playerDirection.normalized) > normalizedLookClamping && targetDistance < minimumLookRadius * minimumLookRadius)
         {
-            transform.rotation = Quaternion.LookRotation(playerDirection.normalized);
+            targetRotation = Quaternion.LookRotation(playerDirection.normalized);
         }
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
     }
 }

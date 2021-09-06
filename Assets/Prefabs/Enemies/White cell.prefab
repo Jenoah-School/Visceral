@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 9184389603804742059}
   - component: {fileID: 9184389603804742055}
   - component: {fileID: 9184389603804742054}
+  - component: {fileID: 5543287714177511400}
   m_Layer: 7
   m_Name: White cell
   m_TagString: Enemy
@@ -138,7 +139,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 678bcc01eb9aef444b984e46396a2930, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 68e7c087c0f83bb499f5acbb69911a7f, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -177,7 +178,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: f724a7469db757843a5d0d9233d1a8b6, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 8ee4d79ba6d8f3141b79af14392bf8cf, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -220,13 +221,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8994a6fc6076e41ba775f6ff45ccbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followDistance: 8
+  followDistance: 12
   stopDistance: 3
   target: {fileID: 0}
-  moveSpeed: 2
+  moveSpeed: 3.5
   targetOffset: {x: 0, y: 1.5, z: 0}
   rotateInMoveDirection: 1
   rotationSmoothing: 5
+  speedBeforeLookAt: 1
 --- !u!114 &9184389603804742059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,8 +257,8 @@ Rigidbody:
   m_GameObject: {fileID: 9184389603804742050}
   serializedVersion: 2
   m_Mass: 10
-  m_Drag: 3
-  m_AngularDrag: 10
+  m_Drag: 1
+  m_AngularDrag: 3
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -358,6 +360,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!195 &5543287714177511400
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9184389603804742050}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.75
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2.5
+  m_BaseOffset: 1.25
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &9184389605375899257
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,3 +494,4 @@ MonoBehaviour:
   moveAxis: {x: 0, y: 1, z: 0}
   hoverSpeed: 1.25
   hoverHeight: 0.3
+  hasRandomOffset: 1

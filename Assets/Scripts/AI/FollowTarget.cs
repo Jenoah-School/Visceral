@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+//[RequireComponent(typeof(NavMeshAgent))]
 public class FollowTarget : MonoBehaviour
 {
     [Header("Distances")]
@@ -15,12 +17,12 @@ public class FollowTarget : MonoBehaviour
 
     [Header("Rotation")]
     [SerializeField] private bool rotateInMoveDirection = true;
-    [SerializeField, Range(0,10)] private float rotationSmoothing = 0.95f;
+    [SerializeField, Range(0, 10)] private float rotationSmoothing = 0.95f;
+    [SerializeField] private float speedBeforeLookAt = 1f;
 
     private Vector3 velocity = Vector3.zero;
     private Quaternion targetRotation = Quaternion.identity;
-
-    private Vector3 previousPosition = Vector3.zero;
+    private NavMeshAgent navMeshAgent = null;
 
     private bool canMove = true;
 
@@ -28,47 +30,65 @@ public class FollowTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
+        if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
         if (target == null)
         {
             Debug.LogWarning("No movement target set", gameObject);
             enabled = false;
+        }
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.stoppingDistance = stopDistance;
+        navMeshAgent.speed = moveSpeed;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 5f))
+        {
+            if (hit.distance > 0.4f)
+            {
+                transform.position = hit.point + Vector3.up * navMeshAgent.height / 2f;
+            }
+        }
+    }
+
+    private void OnDisable()
+    {
+        navMeshAgent.isStopped = true;
+        navMeshAgent.enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        if (navMeshAgent != null)
+        {
+            navMeshAgent.enabled = true;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        float currentDistanceFromTargetSqr = (transform.position - target.position).sqrMagnitude;
         if (canMove)
         {
-            float currentDistanceFromTargetSqr = (transform.position - target.position).sqrMagnitude;
             if (currentDistanceFromTargetSqr < followDistance * followDistance && currentDistanceFromTargetSqr > stopDistance * stopDistance)
             {
-                MoveToPosition(target.position + targetOffset);
+                //MoveToPosition(target.position + targetOffset);
+                navMeshAgent.SetDestination(target.position + targetOffset);
             }
         }
 
         if (rotateInMoveDirection)
         {
-            velocity = transform.position - previousPosition;
-            if (velocity == Vector3.zero)
+            if (currentDistanceFromTargetSqr < followDistance * followDistance)
             {
                 targetRotation = Quaternion.LookRotation(((target.position + targetOffset) - transform.position));
             }
             else
             {
-                targetRotation = Quaternion.LookRotation(velocity.normalized);
+                targetRotation = Quaternion.LookRotation(navMeshAgent.velocity.normalized);
             }
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
         }
-
-
-        previousPosition = transform.position;
-    }
-
-    private void MoveToPosition(Vector3 targetPosition)
-    {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 
     private void OnDrawGizmosSelected()

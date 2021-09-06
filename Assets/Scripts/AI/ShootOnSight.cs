@@ -8,6 +8,7 @@ public class ShootOnSight : MonoBehaviour
     [SerializeField] private bool canShootWhenMoving = false;
     [SerializeField] private float minimumShootDistance = 4f;
     [SerializeField] private float maximumShootDistance = 10f;
+    [SerializeField, Range(-1f, 1f)] private float alignmentWeightForShot = 0.8f;
     [SerializeField] private Transform target = null;
     [SerializeField] private float shootCooldown = 2f;
     [SerializeField] private LayerMask ignoreLayers;
@@ -24,7 +25,7 @@ public class ShootOnSight : MonoBehaviour
     [SerializeField] private UnityEvent OnShoot;
 
     private float nextShootTime = 0f;
-    private bool hasClearView = false;
+    private bool viewIsObstructed = false;
     private Vector3 playerDirection = Vector3.zero;
 
     // Start is called before the first frame update
@@ -45,24 +46,27 @@ public class ShootOnSight : MonoBehaviour
     {
         if (IsInRangeAndView())
         {
-            if (!hasClearView)
+            if (viewIsObstructed)
             {
-                hasClearView = true;
+                viewIsObstructed = false;
                 OnFirstSight.Invoke();
             }
 
             if (Time.time < nextShootTime) return;
-            Shoot();
+            if (Vector3.Dot(transform.forward, playerDirection.normalized) > alignmentWeightForShot)
+            {
+                Shoot();
+            }
         }
         else
         {
-            if (hasClearView)
+            if (!viewIsObstructed)
             {
-                hasClearView = false;
+                viewIsObstructed = true;
                 OnLoseSight.Invoke();
             }
         }
- 
+
     }
 
     public bool IsInRangeAndView()
@@ -73,14 +77,14 @@ public class ShootOnSight : MonoBehaviour
         //When AI can shoot
         if (targetDistance < maximumShootDistance * maximumShootDistance && targetDistance > minimumShootDistance * minimumShootDistance)
         {
-                if (Physics.Raycast(transform.position, playerDirection, out RaycastHit hit, maximumShootDistance, ~ignoreLayers))
+            if (Physics.Raycast(transform.position, playerDirection, out RaycastHit hit, maximumShootDistance, ~ignoreLayers))
+            {
+                //If target is in view
+                if (hit.transform.root == target)
                 {
-                    //If target is in view
-                    if (hit.transform.root == target)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
+            }
         }
 
         return false;
