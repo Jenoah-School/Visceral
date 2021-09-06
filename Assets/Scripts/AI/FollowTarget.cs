@@ -79,7 +79,7 @@ public class FollowTarget : MonoBehaviour
 
         if (rotateInMoveDirection)
         {
-            if (currentDistanceFromTargetSqr < followDistance * followDistance)
+            if (currentDistanceFromTargetSqr < followDistance * followDistance || navMeshAgent.velocity == Vector3.zero)
             {
                 targetRotation = Quaternion.LookRotation(((target.position + targetOffset) - transform.position));
             }
