@@ -10,9 +10,12 @@ public class CameraDistortOverTime : MonoBehaviour
     [SerializeField] private AnimationCurve pulseCurve = new AnimationCurve(new Keyframe(0f, 1f), new Keyframe(.5f, 0f), new Keyframe(1f, 1f));
     [SerializeField] private float speed = 3f;
     [SerializeField] private float intensity = 1f;
+    [SerializeField] private float distanceBeforeActivation = 20f;
+    [SerializeField] private AnimationCurve distanceIntensityCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
 
     [SerializeField] private Transform intensityTarget = null;
     private float dotIntensity = 1f;
+    private float targetDistance = 1f;
 
     private LensDistortion lensDistortion;
 
@@ -25,10 +28,14 @@ public class CameraDistortOverTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 targetDirection = (intensityTarget.position - transform.position).normalized;
-        float normalizedTime = (Time.time * speed) % 1f; 
+        float normalizedTime = (Time.time * speed) % 1f;
 
-        dotIntensity = intensityTarget == null ? 1f : Mathf.Clamp01(Vector3.Dot(transform.forward, targetDirection));
-        lensDistortion.intensity.value = pulseCurve.Evaluate(normalizedTime) * (intensity * dotIntensity);
+        if (intensityTarget != null)
+        {
+            Vector3 targetDirection = (intensityTarget.position - transform.position);
+            dotIntensity = Mathf.Clamp01(Vector3.Dot(transform.forward, targetDirection.normalized));
+            targetDistance = targetDirection.sqrMagnitude > distanceBeforeActivation * distanceBeforeActivation ? 0f : 1f - distanceIntensityCurve.Evaluate(targetDirection.sqrMagnitude / (distanceBeforeActivation * distanceBeforeActivation));
+        }
+        lensDistortion.intensity.value = pulseCurve.Evaluate(normalizedTime) * (intensity * dotIntensity * targetDistance);
     }
 }

@@ -106,6 +106,7 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && isInUse)
         {
+            if (Time.frameCount < 5) return;
             Shoot();
             if (continuesMuzzleFlash)
             {

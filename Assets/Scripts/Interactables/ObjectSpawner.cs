@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Lean.Pool;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class ObjectSpawner : MonoBehaviour
         {
             spawnPosition = hit.point;
 
-            GameObject spawnedObject = Instantiate(objectToSpawn);
+            GameObject spawnedObject = LeanPool.Spawn(objectToSpawn);
             spawnedObject.transform.position = spawnPosition;
 
             spawnedObjects++;

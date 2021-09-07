@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Lean.Pool;
 
 public class ShootOnSight : MonoBehaviour
 {
-    [SerializeField] private bool canShootWhenMoving = false;
     [SerializeField] private float minimumShootDistance = 4f;
     [SerializeField] private float maximumShootDistance = 10f;
     [SerializeField, Range(-1f, 1f)] private float alignmentWeightForShot = 0.8f;
@@ -92,10 +92,10 @@ public class ShootOnSight : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject projectile = Instantiate(projectilePrefab);
+        GameObject projectile = LeanPool.Spawn(projectilePrefab);
         projectile.transform.position = spawnPoint.position;
         projectile.transform.rotation = Quaternion.LookRotation(playerDirection.normalized);
-        Destroy(projectile, projectileLifetime);
+        LeanPool.Despawn(projectile, projectileLifetime);
         nextShootTime = Time.time + shootCooldown;
         OnShoot.Invoke();
     }
