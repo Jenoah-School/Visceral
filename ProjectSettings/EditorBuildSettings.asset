@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlaytestScene01.unity
     guid: 3cee78d0dafcc8c43b76ac231da2d0e4
+  - enabled: 1
+    path: Assets/Scenes/Norina test.unity
+    guid: ab3add94cac6d2e4da0941d8ab987792
   m_configObjects: {}
