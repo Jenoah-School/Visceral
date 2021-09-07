@@ -1317,7 +1317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5047608972750780018, guid: 413b6b0ef5cae3f47b6766152c7ec573, type: 3}
       propertyPath: ShapeModule.radiusThickness
-      value: 1.0000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5047608972750780018, guid: 413b6b0ef5cae3f47b6766152c7ec573, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -2012,7 +2012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1177996271
 Light:
   m_ObjectHideFlags: 0
@@ -3048,7 +3048,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5b4d359a9c5f1d54c90659421feb4519, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7c429264f48afa646acd26ebf5dd1b36, type: 2}
+      objectReference: {fileID: 2100000, guid: 82d3ba2f412884a22b594d1e6ce250b3, type: 2}
     - target: {fileID: 919132149155446097, guid: 5b4d359a9c5f1d54c90659421feb4519, type: 3}
       propertyPath: m_Name
       value: Throat_Shell_02

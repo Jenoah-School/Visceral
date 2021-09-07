@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Norina test.unity
     guid: ab3add94cac6d2e4da0941d8ab987792
+  - enabled: 1
+    path: Assets/Scenes/Liam Test.unity
+    guid: 0984710855a62b045adb7f18cd8f1ed3
   m_configObjects: {}
