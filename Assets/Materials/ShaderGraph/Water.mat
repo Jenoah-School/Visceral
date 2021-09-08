@@ -43,10 +43,10 @@ Material:
     - Vector1_735b38af6a91427f95d4f56df24a4124: 35
     - _Depth: 0.25
     - _Smoothness: 1
-    - _Strength: 0.5
+    - _Strength: 0.025
     - _WaveNormalStrength: 1
     m_Colors:
-    - _DeepWater: {r: 0, g: 0.40638587, b: 1, a: 0.09411765}
-    - _ShallowWater: {r: 0.02264148, g: 0.85502166, b: 1, a: 0.015686275}
+    - _DeepWater: {r: 0, g: 0.4063858, b: 1, a: 0.8666667}
+    - _ShallowWater: {r: 0.08728507, g: 0, b: 0.5943396, a: 0.19607843}
     - _WavesTiling: {r: 0.2, g: 0.2, b: 0, a: 0}
   m_BuildTextureStacks: []
