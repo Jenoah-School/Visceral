@@ -160,7 +160,7 @@ public class Weapon : MonoBehaviour
                 {
                     if (hit.collider != null)
                     {
-                        if (hit.transform.CompareTag("Enemy") && hit.transform.root.gameObject.TryGetComponent(out EntityHealth entityHealth))
+                        if ((hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Damageable")) && hit.transform.root.gameObject.TryGetComponent(out EntityHealth entityHealth))
                         {
                             entityHealth.DealDamage(bulletDamage);
                         }
