@@ -6,7 +6,6 @@ public class LookAt : MonoBehaviour
 {
     [SerializeField] private float minimumLookRadius = 10f;
     [SerializeField] private Transform target = null;
-    [SerializeField] private float shootCooldown = 3f;
     [SerializeField] private Vector3 targetOffset = Vector3.zero;
     [SerializeField] private float rotationSmoothing = 5f;
     [SerializeField] private float lookClamping = 45f;

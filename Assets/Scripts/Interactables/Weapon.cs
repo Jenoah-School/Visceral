@@ -106,6 +106,7 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && isInUse)
         {
+            if (Time.frameCount < 5) return;
             Shoot();
             if (continuesMuzzleFlash)
             {
@@ -159,7 +160,7 @@ public class Weapon : MonoBehaviour
                 {
                     if (hit.collider != null)
                     {
-                        if (hit.transform.CompareTag("Enemy") && hit.transform.root.gameObject.TryGetComponent(out EntityHealth entityHealth))
+                        if ((hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Damageable")) && hit.transform.root.gameObject.TryGetComponent(out EntityHealth entityHealth))
                         {
                             entityHealth.DealDamage(bulletDamage);
                         }

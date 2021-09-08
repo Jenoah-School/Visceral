@@ -16,7 +16,7 @@ public class HoverTransform : MonoBehaviour
     void Start()
     {
         startPosition = transform.localPosition;
-        lifeTime += Random.Range(0f, 1000f);
+        if(hasRandomOffset) lifeTime += Random.Range(0f, 1000f);
     }
 
     // Update is called once per frame

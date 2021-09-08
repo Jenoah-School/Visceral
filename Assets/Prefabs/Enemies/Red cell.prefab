@@ -482,7 +482,6 @@ MonoBehaviour:
   targetOffset: {x: 0, y: 1.5, z: 0}
   rotateInMoveDirection: 1
   rotationSmoothing: 5
-  speedBeforeLookAt: 1
 --- !u!114 &299973550705342463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,9 +494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd0fdd427c434f03b480c2f4631c6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canShootWhenMoving: 0
   minimumShootDistance: 3.9
-  maximumShootDistance: 10
+  maximumShootDistance: 20
   alignmentWeightForShot: 0.95
   target: {fileID: 0}
   shootCooldown: 2

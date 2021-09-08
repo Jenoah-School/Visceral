@@ -18,9 +18,7 @@ public class FollowTarget : MonoBehaviour
     [Header("Rotation")]
     [SerializeField] private bool rotateInMoveDirection = true;
     [SerializeField, Range(0, 10)] private float rotationSmoothing = 0.95f;
-    [SerializeField] private float speedBeforeLookAt = 1f;
 
-    private Vector3 velocity = Vector3.zero;
     private Quaternion targetRotation = Quaternion.identity;
     private NavMeshAgent navMeshAgent = null;
 
