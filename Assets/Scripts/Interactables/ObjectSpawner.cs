@@ -45,6 +45,11 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
+    public void StopSpawning()
+    {
+        CancelInvoke();
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
