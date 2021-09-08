@@ -381,7 +381,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 68e7c087c0f83bb499f5acbb69911a7f, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 03a7f48f8af9f024a84cf2d201e53a92, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 8ee4d79ba6d8f3141b79af14392bf8cf, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 664ea184c95cdb047a271726a913b7b3, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -482,7 +482,6 @@ MonoBehaviour:
   targetOffset: {x: 0, y: 1.5, z: 0}
   rotateInMoveDirection: 1
   rotationSmoothing: 5
-  speedBeforeLookAt: 1
 --- !u!114 &299973550705342463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,9 +494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd0fdd427c434f03b480c2f4631c6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canShootWhenMoving: 0
   minimumShootDistance: 3.9
-  maximumShootDistance: 10
+  maximumShootDistance: 20
   alignmentWeightForShot: 0.95
   target: {fileID: 0}
   shootCooldown: 2
@@ -546,7 +544,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 7f000e41343794a42811fee50f605b23, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: e15a5c097a1d7f246b1a4e3d94067981, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
