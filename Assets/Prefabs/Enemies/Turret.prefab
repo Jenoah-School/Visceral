@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 6094185229028684263}
   - component: {fileID: 6094185229028684262}
   - component: {fileID: 6094185229028684261}
+  - component: {fileID: 375192401385676180}
   m_Layer: 7
   m_Name: Turret
   m_TagString: Enemy
@@ -429,6 +430,42 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 375192401385676180}
+        m_TargetAssemblyTypeName: Explode, Assembly-CSharp
+        m_MethodName: SpawnExplosion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3413953745314312177}
+        m_TargetAssemblyTypeName: QuickAnimations, Assembly-CSharp
+        m_MethodName: Grow
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.3
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3413953745314312177}
+        m_TargetAssemblyTypeName: QuickAnimations, Assembly-CSharp
+        m_MethodName: FadeOut
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.3
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -606,6 +643,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &375192401385676180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094185229028684259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e11cb4efb5e03145ba894512b2fbc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6094185229032068064
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +667,7 @@ GameObject:
   - component: {fileID: 6094185229032068068}
   - component: {fileID: 6094185229032068069}
   - component: {fileID: 6094185229032068070}
+  - component: {fileID: 3413953745314312177}
   m_Layer: 7
   m_Name: Model
   m_TagString: Enemy
@@ -704,3 +754,30 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3413953745314312177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094185229032068064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eca77c8398407479540b3c995da8d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderers:
+  - {fileID: 6094185229032068069}
+  - {fileID: 6094185227717341652}
+  - {fileID: 6094185228467612755}
+  - {fileID: 6094185227521792737}
+  colliders:
+  - {fileID: 6094185229032068070}
+  - {fileID: 6094185227717341653}
+  - {fileID: 6094185228467612764}
+  - {fileID: 6094185227521792738}
+  rootObject: {fileID: 6094185229028684259}
+  disableCollisionOnGrow: 1
+  destroyAfterFade: 1
+  growTarget: 2.5
+  squishTarget: 0.1
