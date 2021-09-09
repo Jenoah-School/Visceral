@@ -15,6 +15,7 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private GameObject objectToSpawn = null;
     [SerializeField] private Vector3 spawnOffset = new Vector3(0f, 0.5f, 0f);
     [SerializeField] private float spawnErrorMargin = 4f;
+    [SerializeField] private bool autoSpawn = true;
 
 
     private int spawnedObjects = 0;
@@ -23,6 +24,12 @@ public class ObjectSpawner : MonoBehaviour
     void Start()
     {
         if (objectToSpawn == null) enabled = false;
+        if(autoSpawn) InvokeRepeating("TrySpawnEnemy", spawnDelay, spawnDelay);
+    }
+
+    public void StartSpawning()
+    {
+        CancelInvoke();
         InvokeRepeating("TrySpawnEnemy", spawnDelay, spawnDelay);
     }
 
