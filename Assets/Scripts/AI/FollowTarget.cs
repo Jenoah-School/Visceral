@@ -9,6 +9,7 @@ public class FollowTarget : MonoBehaviour
     [Header("Distances")]
     [SerializeField] private float followDistance = 8f;
     [SerializeField] private float stopDistance = 3f;
+    [SerializeField] private float heightOffset = 1.25f;
 
     [Header("Settings")]
     [SerializeField] private Transform target = null;
@@ -35,7 +36,8 @@ public class FollowTarget : MonoBehaviour
             enabled = false;
         }
 
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
+        navMeshAgent.baseOffset = heightOffset;
         navMeshAgent.stoppingDistance = stopDistance;
         navMeshAgent.speed = moveSpeed;
 
@@ -50,8 +52,11 @@ public class FollowTarget : MonoBehaviour
 
     private void OnDisable()
     {
-        navMeshAgent.isStopped = true;
-        navMeshAgent.enabled = false;
+        if (navMeshAgent != null)
+        {
+            navMeshAgent.isStopped = true;
+            navMeshAgent.enabled = false;
+        }
     }
 
     private void OnEnable()

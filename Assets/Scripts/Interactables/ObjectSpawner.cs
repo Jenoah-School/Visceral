@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Lean.Pool;
+using UnityEngine.AI;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private int maxSpawnableObjects = 5;
     [SerializeField] private UnityEvent OnSpawnedAllEnemies;
     [SerializeField] private GameObject objectToSpawn = null;
+    [SerializeField] private Vector3 spawnOffset = new Vector3(0f, 0.5f, 0f);
+    [SerializeField] private float spawnErrorMargin = 4f;
 
 
     private int spawnedObjects = 0;
@@ -29,9 +32,22 @@ public class ObjectSpawner : MonoBehaviour
         spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y) + transform.position;
         if (Physics.Raycast(spawnPosition + Vector3.up, Vector3.down, out RaycastHit hit, 2f, spawnableLayers))
         {
-            spawnPosition = hit.point;
+            spawnPosition = hit.point + spawnOffset;
 
             GameObject spawnedObject = LeanPool.Spawn(objectToSpawn);
+            
+            if(spawnedObject.TryGetComponent(out NavMeshAgent navMeshAgent))
+            {
+                if (NavMesh.SamplePosition(spawnPosition, out NavMeshHit closestValidPosition, spawnErrorMargin, NavMesh.AllAreas)){
+                    spawnPosition = closestValidPosition.position;
+                    Debug.Log("Agent position is valid");
+                }
+                else
+                {
+                    Debug.Log("No valid navmesh could be found in the spawnregion for " + spawnedObject.name, spawnedObject);
+                }
+            }
+
             spawnedObject.transform.position = spawnPosition;
 
             spawnedObjects++;

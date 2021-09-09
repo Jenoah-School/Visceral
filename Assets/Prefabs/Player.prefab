@@ -263,8 +263,8 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 128
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 100, y: 100, z: 100}
-  m_BoxOffset: {x: 0, y: 0, z: 0}
+  m_BoxSize: {x: 50, y: 25, z: 50}
+  m_BoxOffset: {x: 0, y: 10, z: 0}
   m_NearClip: 0.3
   m_FarClip: 1000
   m_ShadowDistance: 100
@@ -353,9 +353,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.4188679, b: 0.93880403, a: 1}
-  m_Intensity: 2
-  m_Range: 30
+  m_Color: {r: 0.764151, g: 0.039649345, b: 0.10404932, a: 1}
+  m_Intensity: 10
+  m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -898,7 +898,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: db89f3211d4920945892aaef88633c44, type: 2}
+  sharedProfile: {fileID: 11400000, guid: a7a970debcdd7604ba5051f565393633, type: 2}
 --- !u!114 &1933883574
 MonoBehaviour:
   m_ObjectHideFlags: 0
