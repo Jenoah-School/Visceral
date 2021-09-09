@@ -23,8 +23,16 @@ public class EnemyCounter : MonoBehaviour
     // Update is called once per frame
     public int GetEnemyCount()
     {
+        int actualEnemyCount = 0;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-        return enemies.Length;
+        foreach(GameObject enemy in enemies)
+        {
+            if(enemy.TryGetComponent(out EntityHealth enemyHealth) && enemyHealth.health > 0)
+            {
+                actualEnemyCount++;
+            }
+        }
+        return actualEnemyCount;
     }
 
     public void UpdateEnemyCountLabel()

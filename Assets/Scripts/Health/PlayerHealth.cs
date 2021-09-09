@@ -48,13 +48,14 @@ public class PlayerHealth : EntityHealth
     public override void DealDamage(float damageAmount)
     {
         base.DealDamage(damageAmount);
+        healthBar.DOKill();
         if (health <= 0)
         {
-            if (healthBar != null) healthBar.DOFillAmount(0f, 0.5f);
+            if (healthBar != null) healthBar.DOFillAmount(0f, 0.1f);
         }
         else
         {
-            if (healthBar != null) healthBar.DOFillAmount(1f / (startHealth / health), 0.5f);
+            if (healthBar != null) healthBar.DOFillAmount(1f / (startHealth / health), 0.1f);
         }
     }
 

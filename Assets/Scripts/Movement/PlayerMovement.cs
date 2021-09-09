@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float runSpeed = 3.5f;
     [SerializeField] private float crouchSpeed = 0.5f;
     [SerializeField] private float fastCrouchSpeed = 2f;
+    [SerializeField] private float jumpHeight = 300f;
 
     [Header("Generic")]
     [SerializeField, Range(0f, 10f)] private float moveStateTransitionSmoothing = 0.3f;
@@ -61,6 +62,11 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             SetMoveState(MoveState.walking);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerRigidbody.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
         }
 
         currentMoveSpeed = Mathf.Lerp(currentMoveSpeed, targetMoveSpeed, moveStateTransitionSmoothing * Time.deltaTime);
