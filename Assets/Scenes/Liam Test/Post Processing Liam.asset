@@ -101,7 +101,7 @@ MonoBehaviour:
     m_Value: 0.36
   contrast:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -5
     min: -100
     max: 100
   colorFilter:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
