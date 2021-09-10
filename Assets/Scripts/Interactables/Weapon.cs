@@ -206,7 +206,7 @@ public class Weapon : MonoBehaviour
 
             if (useScreenShake && screenShake != null)
             {
-                screenShake.Shake(shakeDuration, shakeDistance, shakeSpeed);
+                screenShake.Shake(shakeDuration, shakeDistance, Mathf.RoundToInt(shakeSpeed));
             }
 
             if (recoil)
