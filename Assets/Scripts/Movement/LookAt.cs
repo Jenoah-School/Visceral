@@ -17,7 +17,7 @@ public class LookAt : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform.root;
+        if (target == null) target = Camera.main.transform;
         if (target == null)
         {
             Debug.LogWarning("No shooting target set", gameObject);
