@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class EntityHealth : MonoBehaviour
 {
-    [SerializeField] protected float health = 100f;
+    [SerializeField] public float health = 100f;
     [SerializeField] private UnityEvent OnHit;
     [SerializeField] private UnityEvent OnDeath;
 

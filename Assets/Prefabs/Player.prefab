@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 6788947631706273187}
-  lookSpeed: 5
+  lookSpeed: 3.14159
   verticalRotationLimit: {x: -85, y: 89}
 --- !u!114 &6788947632087072923
 MonoBehaviour:
@@ -1568,13 +1568,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e29cf6b5a11b6444887974bde10a6989, type: 3}
---- !u!4 &6788947631188110296 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7901259146055284781, guid: e29cf6b5a11b6444887974bde10a6989, type: 3}
-  m_PrefabInstance: {fileID: 3715969635722204149}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &6788947631188110302 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7901259146055284779, guid: e29cf6b5a11b6444887974bde10a6989, type: 3}
+  m_PrefabInstance: {fileID: 3715969635722204149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6788947631188110296 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7901259146055284781, guid: e29cf6b5a11b6444887974bde10a6989, type: 3}
   m_PrefabInstance: {fileID: 3715969635722204149}
   m_PrefabAsset: {fileID: 0}
