@@ -1666,6 +1666,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 7676145732461407347, guid: 3da8b8efa0a758d459856c4cfd733c75, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9672604
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676145732461407347, guid: 3da8b8efa0a758d459856c4cfd733c75, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.10729985
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676145732461407347, guid: 3da8b8efa0a758d459856c4cfd733c75, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.22858498
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676145732461407347, guid: 3da8b8efa0a758d459856c4cfd733c75, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.025357343
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676145732461407347, guid: 3da8b8efa0a758d459856c4cfd733c75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 12.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676145732461407347, guid: 3da8b8efa0a758d459856c4cfd733c75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 26.593
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da8b8efa0a758d459856c4cfd733c75, type: 3}
 --- !u!1001 &6788947631027806331
