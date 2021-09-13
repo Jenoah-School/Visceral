@@ -31,14 +31,12 @@ public class ObjectSpawner : MonoBehaviour
     {
         CancelInvoke();
         InvokeRepeating("TrySpawnEnemy", spawnDelay, spawnDelay);
-        Debug.Log("Starting to spawn " + objectToSpawn.name);
     }
 
     private void TrySpawnEnemy()
     {
         Vector3 spawnPosition = Random.insideUnitCircle * spawnRange;
         spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y) + transform.position;
-        Debug.Log("Trying to spawn at " + spawnPosition);
         if (Physics.Raycast(spawnPosition + Vector3.up, Vector3.down, out RaycastHit hit, 2f, spawnableLayers))
         {
             spawnPosition = hit.point + spawnOffset;
@@ -49,12 +47,12 @@ public class ObjectSpawner : MonoBehaviour
             {
                 if (NavMesh.SamplePosition(spawnPosition, out NavMeshHit closestValidPosition, spawnErrorMargin, NavMesh.AllAreas)){
                     spawnPosition = closestValidPosition.position;
-                    Debug.Log("Agent position is valid");
+                    //Debug.Log("Agent position is valid");
                 }
-                else
-                {
-                    Debug.Log("No valid navmesh could be found in the spawnregion for " + spawnedObject.name, spawnedObject);
-                }
+                //else
+                //{
+                //    Debug.Log("No valid navmesh could be found in the spawnregion for " + spawnedObject.name, spawnedObject);
+                //}
             }
 
             spawnedObject.transform.position = spawnPosition;
