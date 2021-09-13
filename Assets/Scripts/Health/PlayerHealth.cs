@@ -33,7 +33,7 @@ public class PlayerHealth : EntityHealth
     private void Start()
     {
         startHealth = health;
-        lowHealthValue = health / 100f * lowHealthValue;
+        lowHealthValue = health / 100f * lowHealthPercentage;
         nextReloadTime = Time.time;
         healthStartPosition = healthBar.rectTransform.anchoredPosition;
         reloadStartPosition = reloadBar.rectTransform.anchoredPosition;

@@ -1325,7 +1325,7 @@ MonoBehaviour:
   reloadKey: 114
   reloadCooldown: 10
   projectileDamage: 10
-  lowHealthPercentage: 30
+  lowHealthPercentage: 35
   OnHeal:
     m_PersistentCalls:
       m_Calls:
@@ -1342,16 +1342,28 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: QuickAnimations, Assembly-CSharp
-        m_MethodName: ResetImageColor
+        m_TargetAssemblyTypeName: FadeText, Assembly-CSharp
+        m_MethodName: FadeIn
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.2
+          m_FloatArgument: 0.5
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AlphaOverTime, Assembly-CSharp
+        m_MethodName: FadeOut
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   OnLowHealth:
     m_PersistentCalls:
@@ -1369,26 +1381,29 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: QuickAnimations, Assembly-CSharp
-        m_MethodName: Squish
+        m_TargetAssemblyTypeName: AlphaOverTime, Assembly-CSharp
+        m_MethodName: FadeIn
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 1
+          m_FloatArgument: 0.5
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnFinishReload:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: QuickAnimations, Assembly-CSharp
-        m_MethodName: SetImageColor
+        m_TargetAssemblyTypeName: FadeText, Assembly-CSharp
+        m_MethodName: FadeOut
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.2
+          m_FloatArgument: 0.5
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
