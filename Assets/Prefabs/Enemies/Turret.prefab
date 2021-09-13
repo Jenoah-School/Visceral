@@ -530,7 +530,6 @@ MonoBehaviour:
   - {fileID: 8777434708968659356}
   colliders:
   - {fileID: 8987483791597223606}
-  - {fileID: 6029167881782663181, guid: 3da8b8efa0a758d459856c4cfd733c75, type: 3}
   rootObject: {fileID: 6094185229028684259}
   disableCollisionOnGrow: 1
   destroyAfterFade: 1
