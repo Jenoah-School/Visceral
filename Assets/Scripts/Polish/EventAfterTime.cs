@@ -22,6 +22,7 @@ public class EventAfterTime : MonoBehaviour
 
     public void StartEventImmediate()
     {
+        CancelInvoke();
         timedEvent.Invoke();
     }
 }
