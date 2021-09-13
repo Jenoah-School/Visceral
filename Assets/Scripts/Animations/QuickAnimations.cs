@@ -22,6 +22,7 @@ public class QuickAnimations : MonoBehaviour
     [SerializeField] private Color colorTarget = Color.white;
 
     private List<Material> materials = new List<Material>();
+    private List<Color> defaultMaterialColor = new List<Color>();
     private Image image = null;
     private Color startColor;
 
@@ -50,6 +51,29 @@ public class QuickAnimations : MonoBehaviour
         if (image != null)
         {
             image.DOColor(colorTarget, speed);
+        }
+    }
+    public void SetMaterialColor(float speed)
+    {
+        foreach (Material material in materials)
+        {
+            material.DOColor(colorTarget, speed);
+        }
+    }
+
+    public void SetMaterialEmission(float speed)
+    {
+        foreach (Material material in materials)
+        {
+            StartCoroutine(LerpMaterialEmission(material, colorTarget, speed));
+        }
+    }
+
+    public void ResetMaterialColor(float speed)
+    {
+        for (int i = 0; i < materials.Count; i++)
+        {
+            materials[i].DOColor(defaultMaterialColor[i], speed);
         }
     }
 
@@ -104,12 +128,27 @@ public class QuickAnimations : MonoBehaviour
         {
             if (LeanPool.Links.ContainsKey(gameObject))
             {
-            LeanPool.Despawn(gameObject, speed + 0.1f);
+            LeanPool.Despawn(rootObject, speed + 0.1f);
             }
             else
             {
-                Destroy(gameObject, speed + 0.1f);
+                Destroy(rootObject, speed + 0.1f);
             }
         }
+    }
+
+    IEnumerator LerpMaterialEmission(Material materialToFade, Color targetColor, float speed)
+    {
+        Color currentColor = materialToFade.GetColor("_EmissionColor");
+        float elapsedTime = 0f;
+
+        while (elapsedTime < speed)
+        {
+            elapsedTime += Time.deltaTime;
+            materialToFade.SetColor("_EmissionColor", Color.Lerp(currentColor, targetColor, elapsedTime / speed));
+            yield return new WaitForEndOfFrame();
+        }
+
+        materialToFade.SetColor("_EmissionColor", targetColor);
     }
 }

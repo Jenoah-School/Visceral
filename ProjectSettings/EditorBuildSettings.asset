@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Heart.unity
     guid: 86fa44484dde6734ea86cc37eb40c879
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 6801b557320e9ad4a859fc3c7e559626
   m_configObjects: {}

@@ -30,7 +30,7 @@ public class ScaleOverTime : MonoBehaviour
             OnBeginCurve.Invoke();
         }
 
-        transform.localScale = startScale * (scaleCurve.Evaluate(normalizedTime) * intensity);
+        transform.localScale = startScale + Vector3.one * (scaleCurve.Evaluate(normalizedTime) * intensity);
         previousNormalizedTime = normalizedTime;
     }
 }

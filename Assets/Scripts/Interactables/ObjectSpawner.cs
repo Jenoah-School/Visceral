@@ -24,7 +24,7 @@ public class ObjectSpawner : MonoBehaviour
     void Start()
     {
         if (objectToSpawn == null) enabled = false;
-        if(autoSpawn) InvokeRepeating("TrySpawnEnemy", spawnDelay, spawnDelay);
+        if (autoSpawn) StartSpawning();
     }
 
     public void StartSpawning()
@@ -47,12 +47,12 @@ public class ObjectSpawner : MonoBehaviour
             {
                 if (NavMesh.SamplePosition(spawnPosition, out NavMeshHit closestValidPosition, spawnErrorMargin, NavMesh.AllAreas)){
                     spawnPosition = closestValidPosition.position;
-                    Debug.Log("Agent position is valid");
+                    //Debug.Log("Agent position is valid");
                 }
-                else
-                {
-                    Debug.Log("No valid navmesh could be found in the spawnregion for " + spawnedObject.name, spawnedObject);
-                }
+                //else
+                //{
+                //    Debug.Log("No valid navmesh could be found in the spawnregion for " + spawnedObject.name, spawnedObject);
+                //}
             }
 
             spawnedObject.transform.position = spawnPosition;
