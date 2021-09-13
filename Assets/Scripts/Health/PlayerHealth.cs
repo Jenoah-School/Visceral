@@ -21,16 +21,22 @@ public class PlayerHealth : EntityHealth
 
     [SerializeField] private UnityEvent OnHeal;
     [SerializeField] private UnityEvent OnLowHealth;
+    [SerializeField] private UnityEvent OnFinishReload;
 
     private float nextReloadTime = 0;
     private float lowHealthValue = 30;
     private bool isLowHealth = false;
+
+    private Vector2 healthStartPosition;
+    private Vector2 reloadStartPosition;
 
     private void Start()
     {
         startHealth = health;
         lowHealthValue = health / 100f * lowHealthValue;
         nextReloadTime = Time.time;
+        healthStartPosition = healthBar.rectTransform.anchoredPosition;
+        reloadStartPosition = reloadBar.rectTransform.anchoredPosition;
     }
 
     private void Update()
@@ -42,6 +48,7 @@ public class PlayerHealth : EntityHealth
                 health = startHealth;
                 if (healthBar != null) healthBar.DOFillAmount(1f, 1.5f);
                 reloadBar.fillAmount = 0f;
+                StartCoroutine(AfterReloadTimer());
                 nextReloadTime = Time.time + reloadCooldown;
                 isLowHealth = false;
                 OnHeal.Invoke();
@@ -53,7 +60,10 @@ public class PlayerHealth : EntityHealth
             float timeRemaining = Time.time - nextReloadTime;
             float normalizedRemaining = 1f - Mathf.Abs(timeRemaining / reloadCooldown);
             reloadBar.fillAmount = normalizedRemaining;
+            reloadBar.rectTransform.anchoredPosition = reloadStartPosition + new Vector2(reloadBar.rectTransform.sizeDelta.x * reloadBar.fillAmount - reloadBar.rectTransform.sizeDelta.x, 0);
         }
+
+        healthBar.rectTransform.anchoredPosition = healthStartPosition + new Vector2(healthBar.rectTransform.sizeDelta.x * healthBar.fillAmount - healthBar.rectTransform.sizeDelta.x, 0);
     }
 
     public override void DealDamage(float damageAmount)
@@ -82,5 +92,11 @@ public class PlayerHealth : EntityHealth
             Destroy(collision.gameObject);
             DealDamage(projectileDamage);
         }
+    }
+
+    IEnumerator AfterReloadTimer()
+    {
+        yield return new WaitForSeconds(reloadCooldown);
+        OnFinishReload.Invoke();
     }
 }

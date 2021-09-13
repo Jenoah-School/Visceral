@@ -128,11 +128,11 @@ public class QuickAnimations : MonoBehaviour
         {
             if (LeanPool.Links.ContainsKey(gameObject))
             {
-            LeanPool.Despawn(gameObject, speed + 0.1f);
+            LeanPool.Despawn(rootObject, speed + 0.1f);
             }
             else
             {
-                Destroy(gameObject, speed + 0.1f);
+                Destroy(rootObject, speed + 0.1f);
             }
         }
     }
