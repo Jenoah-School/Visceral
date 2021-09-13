@@ -16,12 +16,14 @@ public class PlayerHealth : EntityHealth
     [SerializeField] private float reloadCooldown = 15f;
 
     [Header("Health settings")]
+    public bool isInvincible = false;
     [SerializeField] private float projectileDamage = 10f;
     [SerializeField] private float lowHealthPercentage = 30f;
 
     [SerializeField] private UnityEvent OnHeal;
     [SerializeField] private UnityEvent OnLowHealth;
     [SerializeField] private UnityEvent OnFinishReload;
+
 
     private float nextReloadTime = 0;
     private float lowHealthValue = 30;
@@ -68,6 +70,7 @@ public class PlayerHealth : EntityHealth
 
     public override void DealDamage(float damageAmount)
     {
+        if (isInvincible) return;
         base.DealDamage(damageAmount);
         healthBar.DOKill();
         if (health <= 0)
@@ -92,6 +95,11 @@ public class PlayerHealth : EntityHealth
             Destroy(collision.gameObject);
             DealDamage(projectileDamage);
         }
+    }
+
+    public void SetInvincibility(bool invincibility)
+    {
+        isInvincible = invincibility;
     }
 
     IEnumerator AfterReloadTimer()
