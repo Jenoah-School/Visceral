@@ -24,19 +24,21 @@ public class ObjectSpawner : MonoBehaviour
     void Start()
     {
         if (objectToSpawn == null) enabled = false;
-        if(autoSpawn) InvokeRepeating("TrySpawnEnemy", spawnDelay, spawnDelay);
+        if (autoSpawn) StartSpawning();
     }
 
     public void StartSpawning()
     {
         CancelInvoke();
         InvokeRepeating("TrySpawnEnemy", spawnDelay, spawnDelay);
+        Debug.Log("Starting to spawn " + objectToSpawn.name);
     }
 
     private void TrySpawnEnemy()
     {
         Vector3 spawnPosition = Random.insideUnitCircle * spawnRange;
         spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y) + transform.position;
+        Debug.Log("Trying to spawn at " + spawnPosition);
         if (Physics.Raycast(spawnPosition + Vector3.up, Vector3.down, out RaycastHit hit, 2f, spawnableLayers))
         {
             spawnPosition = hit.point + spawnOffset;
