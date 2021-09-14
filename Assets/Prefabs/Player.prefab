@@ -233,7 +233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1151824174
 Transform:
   m_ObjectHideFlags: 0
@@ -1233,6 +1233,9 @@ MonoBehaviour:
   crouchTransitionSmoothing: 6
   playerRigidbody: {fileID: 6788947632087072932}
   cameraHolder: {fileID: 6788947631706273187}
+  jumpableLayers:
+    serializedVersion: 2
+    m_Bits: 9
   playerCollider: {fileID: 6788947632087072933}
   standingHeight: 1.8
   crouchHeight: 1.1
@@ -1324,8 +1327,9 @@ MonoBehaviour:
   reloadBar: {fileID: 0}
   reloadKey: 114
   reloadCooldown: 10
+  isInvincible: 0
   projectileDamage: 10
-  lowHealthPercentage: 35
+  lowHealthPercentage: 45
   OnHeal:
     m_PersistentCalls:
       m_Calls:
