@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8994a6fc6076e41ba775f6ff45ccbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followDistance: 20
+  followDistance: 12
   stopDistance: 3
   heightOffset: 1.25
   target: {fileID: 0}
