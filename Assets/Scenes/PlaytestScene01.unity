@@ -6757,6 +6757,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8442718279949918553, guid: b689421f0287d734aa85c599deffbb5f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8442718280013649629, guid: b689421f0287d734aa85c599deffbb5f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8442718280022300237, guid: b689421f0287d734aa85c599deffbb5f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b689421f0287d734aa85c599deffbb5f, type: 3}
 --- !u!1001 &904021995
@@ -7077,10 +7089,10 @@ MonoBehaviour:
           m_StringArgument: THROAT CHAMBER
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 96434577}
-        m_TargetAssemblyTypeName: Checkpoint, Assembly-CSharp
-        m_MethodName: Unlock
-        m_Mode: 1
+      - m_Target: {fileID: 1488548508}
+        m_TargetAssemblyTypeName: CheckpointReferences, Assembly-CSharp
+        m_MethodName: TryUnlockCheckpoint
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15870,14 +15882,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1107683151}
-        m_TargetAssemblyTypeName: Checkpoint, Assembly-CSharp
-        m_MethodName: Unlock
-        m_Mode: 1
+      - m_Target: {fileID: 1488548508}
+        m_TargetAssemblyTypeName: CheckpointReferences, Assembly-CSharp
+        m_MethodName: TryUnlockCheckpoint
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
