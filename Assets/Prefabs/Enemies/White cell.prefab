@@ -339,7 +339,7 @@ MonoBehaviour:
   stopDistance: 3
   heightOffset: 1.25
   target: {fileID: 0}
-  moveSpeed: 3.5
+  moveSpeed: 4.5
   targetOffset: {x: 0, y: 1.5, z: 0}
   rotateInMoveDirection: 1
   rotationSmoothing: 5
