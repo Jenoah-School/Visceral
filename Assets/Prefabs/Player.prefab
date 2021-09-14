@@ -6082,7 +6082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderers:
-  - {fileID: 0}
+  - {fileID: 8442718280022300224}
   colliders: []
   rootObject: {fileID: 8442718280013649629}
   disableCollisionOnGrow: 0
