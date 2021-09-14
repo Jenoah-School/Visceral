@@ -16,7 +16,7 @@ public class VolumeSlider : MonoBehaviour
     void Awake()
     {
         slider = GetComponent<Slider>();
-        float currentVolume = PlayerPrefs.GetFloat(volumeParameterName, 0f);
+        float currentVolume = PlayerPrefs.GetFloat(volumeParameterName, 1f);
         slider.onValueChanged.AddListener(delegate { OnVolumeSliderChange(); });
         SetVolume(currentVolume);
         slider.value = currentVolume;
@@ -36,7 +36,8 @@ public class VolumeSlider : MonoBehaviour
     /// <param name="targetVolume"></param>
     void SetVolume(float targetVolume)
     {
-        mixGroup.audioMixer.SetFloat(volumeParameterName, targetVolume);
+        float mixerTargetVolume = Mathf.Log10(targetVolume) * 20f;
+        mixGroup.audioMixer.SetFloat(volumeParameterName, mixerTargetVolume);
         PlayerPrefs.SetFloat(volumeParameterName, targetVolume);
     }
 }
