@@ -96,7 +96,7 @@ MonoBehaviour:
   maximumShootDistance: 50
   alignmentWeightForShot: 0.95
   target: {fileID: 0}
-  shootCooldown: 1
+  shootCooldown: 2
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 438
