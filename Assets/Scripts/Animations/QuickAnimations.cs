@@ -18,6 +18,7 @@ public class QuickAnimations : MonoBehaviour
 
     [Header("Targets")]
     [SerializeField] private float growTarget = 2.5f;
+    [SerializeField] private float shrinkTarget = 0.5f;
     [SerializeField] private float squishTarget = 0.1f;
     [SerializeField] private Color colorTarget = Color.white;
 
@@ -97,6 +98,18 @@ public class QuickAnimations : MonoBehaviour
         }
     }
 
+    public void Shrink(float speed)
+    {
+        transform.DOScale(shrinkTarget, speed);
+        if (disableCollisionOnGrow)
+        {
+            foreach (Collider collider in colliders)
+            {
+                collider.enabled = false;
+            }
+        }
+    }
+
     private void OnDisable()
     {
         ResetAlphaImmediate();
@@ -111,9 +124,12 @@ public class QuickAnimations : MonoBehaviour
     {
         foreach (Material material in materials)
         {
-            Color tempColor = material.color;
-            tempColor.a = 1f;
-            material.color = tempColor;
+            if (material.HasProperty("_Color"))
+            {
+                Color tempColor = material.color;
+                tempColor.a = 1f;
+                material.color = tempColor;
+            }
         }
     }
 

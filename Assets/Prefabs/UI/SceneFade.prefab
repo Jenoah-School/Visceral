@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 566618496478828058}
   - component: {fileID: 566618496478828059}
   - component: {fileID: 176766514}
+  - component: {fileID: 262188110}
   m_Layer: 5
   m_Name: SceneFade
   m_TagString: Untagged
@@ -188,6 +189,20 @@ MonoBehaviour:
   timerThreshold: 5
   splashScreenAnimator: {fileID: 566618496478828059}
   animationName: FadeOut
+--- !u!114 &262188110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566618496478828060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03f6aee7272e8c439420c27dc50bcac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeAnimator: {fileID: 566618496478828059}
+  fadeDuration: 1.25
 --- !u!1 &566618496787023878
 GameObject:
   m_ObjectHideFlags: 0

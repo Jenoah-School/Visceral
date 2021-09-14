@@ -16,6 +16,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private UnityEvent OnSuccesfullShot;
     [SerializeField] private UnityEvent OnEveryShot;
     [SerializeField] private float bulletDamage = 10f;
+    [SerializeField] private UnityEvent OnStartShoot;
+    [SerializeField] private UnityEvent OnStopShoot;
 
     [Header("Effects")]
     [SerializeField] private bool continuesMuzzleFlash = false;
@@ -56,6 +58,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float bulletDespawnTime = 10f;
     [SerializeField] private float bulletImpactForce = 2f;
     [SerializeField] private float bulletWidth = 0.05f;
+
+    [SerializeField] private Animator animator = null;
+    [SerializeField] private string animationTrigger = "Open";
 
     private float timeBeforeNextShot = 0f;
     private AudioSource audioSource = null;
@@ -121,6 +126,8 @@ public class Weapon : MonoBehaviour
                     audioSource.Play();
                     audioSource.DOFade(targetAudioVolume, 0.3f);
                 }
+                if(animator != null) animator.SetBool(animationTrigger, true);
+                OnStartShoot.Invoke();
             }
         }
         else if (Input.GetMouseButtonUp(0) && isInUse)
@@ -129,10 +136,9 @@ public class Weapon : MonoBehaviour
             {
                 if (muzzleFlash != null) muzzleFlash.Stop();
                 if (muzzleLight != null) muzzleLight.DOIntensity(0f, 0.3f);
-                if (audioSource != null)
-                {
-                    audioSource.DOFade(0f, 0.3f);
-                }
+                if (audioSource != null) audioSource.DOFade(0f, 0.3f);
+                if (animator != null) animator.SetBool(animationTrigger, false);
+                OnStopShoot.Invoke();
             }
         }
 
