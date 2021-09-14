@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(0f, 10f)] private float crouchTransitionSmoothing = 0.3f;
     [SerializeField] private Rigidbody playerRigidbody = null;
     [SerializeField] private Transform cameraHolder = null;
+    [SerializeField] private LayerMask jumpableLayers;
 
     [Header("Collision")]
     [SerializeField] private CapsuleCollider playerCollider = null;
@@ -30,8 +31,9 @@ public class PlayerMovement : MonoBehaviour
 
 
     private MoveState currentMoveState = MoveState.walking;
-    private float currentMoveSpeed = 0;
-    private float targetMoveSpeed = 0;
+    private float currentMoveSpeed = 0f;
+    private float targetMoveSpeed = 0f;
+    private float timeBeforeNextJump = 0f;
 
     private float currentColliderHeight = 1.8f;
     private float targetColliderHeight = 1.8f;
@@ -64,9 +66,13 @@ public class PlayerMovement : MonoBehaviour
             SetMoveState(MoveState.walking);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > timeBeforeNextJump)
         {
-            playerRigidbody.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+            if (Physics.Raycast(transform.position - Vector3.down * 0.02f, Vector3.down, 0.15f, jumpableLayers))
+            {
+                timeBeforeNextJump = Time.time + 0.25f;
+                playerRigidbody.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+            }
         }
 
         currentMoveSpeed = Mathf.Lerp(currentMoveSpeed, targetMoveSpeed, moveStateTransitionSmoothing * Time.deltaTime);

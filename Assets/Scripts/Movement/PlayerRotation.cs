@@ -9,6 +9,7 @@ public class PlayerRotation : MonoBehaviour
     [SerializeField] private Vector2 verticalRotationLimit = new Vector2(-90f, 90f);
 
     private float currentAngleX = 0;
+    private float lookMultiplier = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +18,14 @@ public class PlayerRotation : MonoBehaviour
         {
             cam = Camera.main.transform;
         }
+        lookMultiplier = PlayerPrefs.GetFloat("Mouse Sensitivity", 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * lookSpeed * Time.timeScale;
-        float mouseY = Input.GetAxis("Mouse Y") * lookSpeed * Time.timeScale;
+        float mouseX = Input.GetAxis("Mouse X") * lookSpeed * lookMultiplier * Time.timeScale;
+        float mouseY = Input.GetAxis("Mouse Y") * lookSpeed * lookMultiplier * Time.timeScale;
 
         currentAngleX -= mouseY;
 
