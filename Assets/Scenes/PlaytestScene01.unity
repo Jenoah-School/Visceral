@@ -5273,6 +5273,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1512420270}
     m_Modifications:
+    - target: {fileID: 6310014851744960517, guid: 9a2c5b0a020da4133a9ba8e4caad1d98, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310014851744960517, guid: 9a2c5b0a020da4133a9ba8e4caad1d98, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.61
+      objectReference: {fileID: 0}
     - target: {fileID: 6976847178856174896, guid: 9a2c5b0a020da4133a9ba8e4caad1d98, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -9727,6 +9735,12 @@ PrefabInstance:
     - target: {fileID: 296488994110432791, guid: f74f49947f276c84b82200b3f8d11290, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082430177419199152, guid: f74f49947f276c84b82200b3f8d11290, type: 3}
+      propertyPath: m_text
+      value: '<b>Objective</b>
+
+        Destroy the heart.'
       objectReference: {fileID: 0}
     - target: {fileID: 2234482938447376815, guid: f74f49947f276c84b82200b3f8d11290, type: 3}
       propertyPath: m_IsActive
@@ -16898,6 +16912,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 910597666}
     m_Modifications:
+    - target: {fileID: 5833412800193750870, guid: 3da8b8efa0a758d459856c4cfd733c75, type: 3}
+      propertyPath: shootCooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6094185229028684256, guid: 3da8b8efa0a758d459856c4cfd733c75, type: 3}
       propertyPath: m_RootOrder
       value: 2
