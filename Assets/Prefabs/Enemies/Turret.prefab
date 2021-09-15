@@ -693,7 +693,7 @@ MonoBehaviour:
   destroyAfterFade: 1
   growTarget: 1.5
   shrinkTarget: 0.5
-  squishTarget: 100
+  squishTarget: 0.75
   colorTarget: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &6364585716139812374
 GameObject:
