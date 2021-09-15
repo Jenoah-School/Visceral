@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
     [SerializeField] private Animator fadeAnimator;
     [SerializeField] private float fadeDuration = 1.25f;
+    [SerializeField] private UnityEvent OnSwitchScene;
 
     private bool isTransitioning = false;
 
@@ -16,6 +18,7 @@ public class SceneSwitcher : MonoBehaviour
         {
             isTransitioning = true;
             StartCoroutine(SwitchWithFade(buildIndex));
+            OnSwitchScene.Invoke();
         }
     }
 

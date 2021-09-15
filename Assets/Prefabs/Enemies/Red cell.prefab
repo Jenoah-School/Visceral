@@ -85,7 +85,7 @@ MonoBehaviour:
   rootObject: {fileID: 299973550705342461}
   disableCollisionOnGrow: 1
   destroyAfterFade: 1
-  growTarget: 2.5
+  growTarget: 0.5
   shrinkTarget: 0.5
   squishTarget: 0.1
   colorTarget: {r: 1, g: 1, b: 1, a: 1}
@@ -262,7 +262,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.3
+          m_FloatArgument: 0.1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
