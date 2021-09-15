@@ -32,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 4354251209127056171}
   - {fileID: 1454982284881556282}
+  - {fileID: 5195034194220353164}
   m_Father: {fileID: 299973550705342462}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -119,7 +120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299973550705342461}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -27.742908, y: 76.952, z: -109.91136}
+  m_LocalPosition: {x: -27.72, y: 76.952, z: -109.91136}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 299973549611104382}
@@ -432,7 +433,7 @@ MonoBehaviour:
   targetOffset: {x: 0, y: 0.5, z: 0}
   projectilePrefab: {fileID: 561763895931962308, guid: c0b684f4a84074eadbef36df2d58cc87, type: 3}
   projectileLifetime: 10
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 5195034194220353164}
   OnFirstSight:
     m_PersistentCalls:
       m_Calls:
@@ -671,3 +672,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8602743748226154188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5195034194220353164}
+  m_Layer: 0
+  m_Name: Shooty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5195034194220353164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602743748226154188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 299973549611104382}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
