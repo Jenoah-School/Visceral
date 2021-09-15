@@ -543,7 +543,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5833bfdc99e5bc441b057febdd068a7f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 612e12548493fdf4babdb2d1e1a3e01a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -641,6 +641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eba46e262d80ba4a848520513b35967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &588350350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,3 +1445,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeAnimator: {fileID: 6381453880896572116}
   fadeDuration: 1.25
+  OnSwitchScene:
+    m_PersistentCalls:
+      m_Calls: []
