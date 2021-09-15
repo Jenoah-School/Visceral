@@ -8,22 +8,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: aed9e25170899784fbdc0cbf7e53d700
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameScene.unity
     guid: 864ff6b2be833de4399d01b0ca39f68e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Jenoah Test.unity
     guid: 9cec01a2271eac6449e2b4de6683b99e
   - enabled: 1
     path: Assets/Scenes/PlaytestScene01.unity
     guid: 3cee78d0dafcc8c43b76ac231da2d0e4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Norina test.unity
     guid: ab3add94cac6d2e4da0941d8ab987792
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Liam Test.unity
     guid: 0984710855a62b045adb7f18cd8f1ed3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Heart.unity
     guid: 86fa44484dde6734ea86cc37eb40c879
   - enabled: 1

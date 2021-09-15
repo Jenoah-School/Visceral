@@ -20,6 +20,7 @@ public class QuickAnimations : MonoBehaviour
     [SerializeField] private float growTarget = 2.5f;
     [SerializeField] private float shrinkTarget = 0.5f;
     [SerializeField] private float squishTarget = 0.1f;
+    [SerializeField] private float shakeStrength = .5f;
     [SerializeField] private Color colorTarget = Color.white;
 
     private List<Material> materials = new List<Material>();
@@ -108,6 +109,11 @@ public class QuickAnimations : MonoBehaviour
                 collider.enabled = false;
             }
         }
+    }
+
+    public void Shake(float duration)
+    {
+        transform.DOShakePosition(duration, shakeStrength);
     }
 
     private void OnDisable()

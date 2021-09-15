@@ -157,10 +157,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textOptions:
-  - Smoking kills
-  - You die if you smoke
-  - If you smoke, you are thicc
-  - You haven't got a big brain if you smoke
+  - 'Every year about 5000 teenagers get lung cancer of smoking. Don''t be the next
+    one. '
+  - 'Would you like to get 7000 chemicals into your body? Only one cigarette contains
+    that much. '
+  - An average smoker dies 10 years sooner than a non-smoker. Wouldn't it be great
+    to live longer?
   randomLoadingText: {fileID: 3100862579554900612}
 --- !u!1 &797667791736879332
 GameObject:

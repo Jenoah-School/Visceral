@@ -14,6 +14,7 @@ public class SceneSwitcher : MonoBehaviour
 
     public void SwitchScene(int buildIndex)
     {
+        if (!fadeAnimator.enabled) fadeAnimator.enabled = true;
         if (!isTransitioning)
         {
             isTransitioning = true;
@@ -26,6 +27,12 @@ public class SceneSwitcher : MonoBehaviour
     {
         fadeAnimator.SetTrigger("FadeIn");
         yield return new WaitForSecondsRealtime(fadeDuration);
+        Time.timeScale = 1;
+        SceneManager.LoadSceneAsync(buildIndex, LoadSceneMode.Single);
+    }
+
+    public void InstantSwitch(int buildIndex)
+    {
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync(buildIndex, LoadSceneMode.Single);
     }
