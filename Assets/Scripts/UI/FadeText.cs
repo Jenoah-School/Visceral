@@ -5,19 +5,33 @@ using DG.Tweening;
 
 public class FadeText : MonoBehaviour
 {
+    [SerializeField] private Color targetColor = Color.white;
+
     private TMPro.TextMeshProUGUI textObject;
+    private Color defaultColor = Color.white;
 
     // Start is called before the first frame update
     void Start()
     {
         textObject = GetComponent<TMPro.TextMeshProUGUI>();
         if (textObject == null) enabled = false;
+        defaultColor = textObject.color;
     }
 
     public void FadeIn(float fadeSpeed)
     {
         StopAllCoroutines();
         StartCoroutine(FadeColor(1f, fadeSpeed));
+    }
+
+    public void FadeToTarget(float fadeSpeed)
+    {
+        textObject.DOColor(targetColor, fadeSpeed);
+    }
+    
+    public void FadeToDefault(float fadeSpeed)
+    {
+        textObject.DOColor(defaultColor, fadeSpeed);
     }
 
     public void FadeOut(float fadeSpeed)
