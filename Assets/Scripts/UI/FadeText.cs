@@ -26,12 +26,12 @@ public class FadeText : MonoBehaviour
 
     public void FadeToTarget(float fadeSpeed)
     {
-        textObject.DOColor(targetColor, fadeSpeed);
+        textObject.DOColor(targetColor, fadeSpeed).SetUpdate(true);
     }
     
     public void FadeToDefault(float fadeSpeed)
     {
-        textObject.DOColor(defaultColor, fadeSpeed);
+        textObject.DOColor(defaultColor, fadeSpeed).SetUpdate(true);
     }
 
     public void FadeOut(float fadeSpeed)
@@ -47,7 +47,7 @@ public class FadeText : MonoBehaviour
 
         while(elapsedTime < fadeSpeed)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             textObject.alpha = Mathf.SmoothStep(currentAlpha, targetAlpha, elapsedTime / fadeSpeed);
             yield return new WaitForEndOfFrame();
         }
