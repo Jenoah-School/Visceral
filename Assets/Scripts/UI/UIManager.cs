@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -12,6 +13,10 @@ public class UIManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private bool lockMouseInGame = true;
     [SerializeField] private Selectable firstSelectionOnPause = null;
+
+    [Header("Events")]
+    [SerializeField] private UnityEvent OnPause;
+    [SerializeField] private UnityEvent OnResume;
 
     private UIAnimations[] pausePanels = null;
     private VolumeFader volumeFader = null;
@@ -117,6 +122,8 @@ public class UIManager : MonoBehaviour
 
         if (moveInputToSelectable != null && firstSelectionOnPause != null)
             moveInputToSelectable.MoveToSelectable(firstSelectionOnPause);
+
+        OnPause.Invoke();
     }
 
     /// <summary>
@@ -139,6 +146,8 @@ public class UIManager : MonoBehaviour
         {
             SetMouseLock(true);
         }
+
+        OnResume.Invoke();
 
         if (volumeFader != null)
             volumeFader.FadeIn();
