@@ -42,11 +42,11 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.6903944, a: 1}
   m_Intensity: 167.9
   m_Range: 10
-  m_SpotAngle: 53.16043
-  m_InnerSpotAngle: 19.78813
+  m_SpotAngle: 113.57895
+  m_InnerSpotAngle: 53.01832
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   spawnOffset: {x: 0, y: 0.5, z: 0}
   spawnErrorMargin: 4
   autoSpawn: 0
+  canSpawn: 1
 --- !u!114 &8086264401760594745
 MonoBehaviour:
   m_ObjectHideFlags: 0

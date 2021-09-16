@@ -38,7 +38,6 @@ public class MusicReference : MonoBehaviour
         {
             if (i == audioSourceIndex)
             {
-                Debug.Log("Fading audio to " + i);
                 if (!audioSources[i].isPlaying) audioSources[i].Play();
                 audioSources[i].DOFade(targetVolume, fadeSpeed);
             }
