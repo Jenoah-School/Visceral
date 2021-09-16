@@ -3139,7 +3139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterGroup: {fileID: 24300002, guid: 06d885caf33d4e24ea6d3e90e937bf87, type: 2}
-  mixerName: SceneVolume
+  mixerName: MasterVolume
   fadeTime: 1
 --- !u!114 &437366006
 MonoBehaviour:
