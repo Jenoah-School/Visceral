@@ -28,7 +28,7 @@ public class CheckpointManager : MonoBehaviour
     {
         if (newestCheckpoint != -1)
         {
-            Debug.Log("Loading checkpoint " + newestCheckpoint);
+            //Debug.Log("Loading checkpoint " + newestCheckpoint);
             checkpoints[newestCheckpoint].LoadCheckpoint();
         }
     }

@@ -71,7 +71,7 @@ public class ObjectSpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("No mesh found to spawn on", gameObject);
+            //Debug.Log("No mesh found to spawn on", gameObject);
         }
     }
 
