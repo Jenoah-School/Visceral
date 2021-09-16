@@ -12,35 +12,38 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private LayerMask spawnableLayers;
     [SerializeField] private int maxSpawnableObjects = 5;
     [SerializeField] private UnityEvent OnSpawnedAllEnemies;
-    [SerializeField] private GameObject objectToSpawn = null;
+    [SerializeField] private List<GameObject> objectsToSpawn = new List<GameObject>();
     [SerializeField] private Vector3 spawnOffset = new Vector3(0f, 0.5f, 0f);
     [SerializeField] private float spawnErrorMargin = 4f;
     [SerializeField] private bool autoSpawn = true;
 
+    public bool canSpawn = true;
 
     private int spawnedObjects = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (objectToSpawn == null) enabled = false;
+        if (objectsToSpawn.Count <= 0) enabled = false;
         if (autoSpawn) StartSpawning();
     }
 
     public void StartSpawning()
     {
+        spawnedObjects = 0;
         CancelInvoke();
         InvokeRepeating("TrySpawnEnemy", spawnDelay, spawnDelay);
     }
 
     private void TrySpawnEnemy()
     {
+        if (!canSpawn) { CancelInvoke(); return; }
         Vector3 spawnPosition = Random.insideUnitCircle * spawnRange;
         spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y) + transform.position;
-        if (Physics.Raycast(spawnPosition + Vector3.up, Vector3.down, out RaycastHit hit, 2f, spawnableLayers))
+        if (Physics.Raycast(spawnPosition + Vector3.up, Vector3.down, out RaycastHit hit, spawnErrorMargin, spawnableLayers))
         {
             spawnPosition = hit.point + spawnOffset;
-
+            GameObject objectToSpawn = objectsToSpawn[Random.Range(0, objectsToSpawn.Count)];
             GameObject spawnedObject = LeanPool.Spawn(objectToSpawn);
             
             if(spawnedObject.TryGetComponent(out NavMeshAgent navMeshAgent))
@@ -49,10 +52,10 @@ public class ObjectSpawner : MonoBehaviour
                     spawnPosition = closestValidPosition.position;
                     //Debug.Log("Agent position is valid");
                 }
-                //else
-                //{
-                //    Debug.Log("No valid navmesh could be found in the spawnregion for " + spawnedObject.name, spawnedObject);
-                //}
+                else
+                {
+                    Debug.Log("No valid navmesh could be found in the spawnregion for " + spawnedObject.name, spawnedObject);
+                }
             }
 
             spawnedObject.transform.position = spawnPosition;
@@ -66,11 +69,21 @@ public class ObjectSpawner : MonoBehaviour
                 enabled = false;
             }
         }
+        else
+        {
+            Debug.Log("No mesh found to spawn on", gameObject);
+        }
     }
 
     public void StopSpawning()
     {
         CancelInvoke();
+    }
+
+    public void SetSpawnState(bool spawnState)
+    {
+        if (!spawnState) StopSpawning();
+        canSpawn = spawnState;
     }
 
     private void OnDrawGizmosSelected()

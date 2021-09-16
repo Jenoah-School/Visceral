@@ -40,6 +40,7 @@ public class QuickAnimations : MonoBehaviour
                 }
             }
         }
+
         if (gameObject.TryGetComponent(out image)) startColor = image.color;
     }
 

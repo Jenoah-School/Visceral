@@ -7105,6 +7105,50 @@ MonoBehaviour:
   masterGroup: {fileID: 24300002, guid: 06d885caf33d4e24ea6d3e90e937bf87, type: 2}
   mixerName: MasterVolume
   fadeTime: 1
+--- !u!1 &1763441376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1763441378}
+  - component: {fileID: 1763441377}
+  m_Layer: 0
+  m_Name: --== MISC ==--
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1763441377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763441376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bf94c80c8d22b4892032f2c69ff98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDestroyName: --== CHECKPOINTS ==--
+--- !u!4 &1763441378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763441376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1814240904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1537391395361039045, guid: 1b8104fe673ae014b985ec25c9b26518, type: 3}

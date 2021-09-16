@@ -147,6 +147,7 @@ MonoBehaviour:
   growTarget: 2.5
   shrinkTarget: 0.5
   squishTarget: 0.3
+  shakeStrength: 0.5
   colorTarget: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
 --- !u!1 &8086264401760594722
 GameObject:
@@ -206,7 +207,9 @@ MonoBehaviour:
   OnSpawnedAllEnemies:
     m_PersistentCalls:
       m_Calls: []
-  objectToSpawn: {fileID: 9184389603804742050, guid: f48493fd998c24b428555a4045b0b6e1, type: 3}
+  objectsToSpawn:
+  - {fileID: 9184389603804742050, guid: f48493fd998c24b428555a4045b0b6e1, type: 3}
+  - {fileID: 299973550705342461, guid: d8fb551863ec7484185d641e32e52e9a, type: 3}
   spawnOffset: {x: 0, y: 0.5, z: 0}
   spawnErrorMargin: 4
   autoSpawn: 0
